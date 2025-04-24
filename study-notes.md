@@ -107,6 +107,10 @@ this is kinda like the `open`, `read` and `close` functions but to variable argu
 ---
 ## Printf Flags Behaviour
 
+#### printf format
+
+`%[flags][width][.precision][lenght]specifier`
+
 - '%n[spec]' -> n is a width (as in spaces) for variable to be printed into, i.e.: for n = 10
 ```
 printf("||%10s||\n", "oi");
