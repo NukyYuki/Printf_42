@@ -18,18 +18,18 @@ int	ft_printf(const char *str, ...)
 	int		count;
 
 	va_start(var_args, str);
-	while (str)
+	while (*str != '\0')
 	{
-		while (*str != '%')
+		while (*str != '%' && *str != '\0')
 		{
 			count += ft_putchar(*str);
 			str++;
 		}
 		if (*str == '%')
 		{
-			count += ft_see_format(*str, var_args);
-			if (!ft_see_format(*str, var_args))
-				return (NULL);
+			count += ft_see_format(str, var_args);
+			if (!ft_see_format(str, var_args))
+				return (0);
 			str += 2;
 		}
 	}
