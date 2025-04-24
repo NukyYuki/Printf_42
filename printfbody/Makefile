@@ -1,10 +1,10 @@
-SRCS	= ft_printf.c ft_putchar.c ft_putnbr_base_hexa.c ft_putnbr_decimal.c ft_putstr.c ft_see_format.c ft_strlen.c
+SRCS	= ft_putnbr_decimal.c ft_see_format.c ft_printf.c ft_putnbr_base_hexa.c ft_printf_utils.c 
 OBJS	= ${SRCS:.c=.o}
 NAME	= libftprintf.a
 ARRCS	= ar rcs
 CC		= cc
 RM		= rm -f
-CFLAGS	= -Wextra -Werror -Wall
+CFLAGS	= -Wextra -Werror -Wall -g
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
@@ -17,7 +17,9 @@ all: ${NAME}
 clean:
 	${RM} ${OBJS}
 
-fclean:
+fclean: clean
 	${RM} ${NAME}
 
 re: fclean all
+
+.PHONY: all clean fclean re

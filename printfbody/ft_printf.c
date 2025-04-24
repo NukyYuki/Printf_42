@@ -20,6 +20,7 @@ int	ft_printf(const char *str, ...)
 
 	va_start(var_args, str);
 	i = 0;
+	count = 0;
 	while (str[i] != '\0')
 	{
 		while (str[i] != '%' && str[i] != '\0')
