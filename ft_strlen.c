@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/24 13:07:14 by mipinhei         ###   ########.fr       */
+/*   Created: 2025/04/24 11:11:21 by mipinhei          #+#    #+#             */
+/*   Updated: 2025/04/24 11:46:10 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <limits.h>
+int	ft_strlen(char *s)
+{
+	int	i;
 
-int	ft_printf(const char *str, ...);
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
-int	ft_putnbr_base_hexa(long nb, char *base);
-int	ft_putnbr_decimal(long nb);
-int	ft_print_mem(void *p);
-int	ft_strlen(char *s);
-
-#endif
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
