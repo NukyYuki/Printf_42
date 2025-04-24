@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:07:41 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/23 15:58:12 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:05:27 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	ft_printf(const char *str, ...)
 			str += 2;
 		}
 	}
+	va_end (var_args);
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/24 13:07:14 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:11:02 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	ft_putnbr_base_hexa(long nb, char *base);
 int	ft_putnbr_decimal(long nb);
 int	ft_print_mem(void *p);
 int	ft_strlen(char *s);
+int	ft_see_format(const char *s, va_list var_args);
 
 #endif
