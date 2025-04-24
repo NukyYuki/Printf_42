@@ -1,9 +1,14 @@
 #include "libftprintf.h"
+#include <stdio.h>
+
 int main(void)
 {
-	int	i;
+	char	*s = "Hello";
+	void	*p = s;
+	int		i = 8345;
 
-	i = 0;
-	ft_printf("%i123", i);
+//	ft_printf("%p", p);
+	ft_putnbr_base_hexa(i, "0123456789abcdef");
+	printf("\n%x", i);
 	return 0;
 }

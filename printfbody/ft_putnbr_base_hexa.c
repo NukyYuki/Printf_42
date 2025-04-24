@@ -14,7 +14,7 @@
 
 int	ft_putnbr_base_hexa(long nb, char *base)
 {
-	int	count;
+	int		count;
 
 	count = 0;
 	if (nb < 0)

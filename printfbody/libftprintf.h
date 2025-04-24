@@ -20,7 +20,7 @@
 int	ft_printf(const char *str, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
-int	ft_putnbr_base_hexa(long nb, char *base);
+int	ft_putnbr_base_hexa(long, char *base);
 int	ft_putnbr_decimal(long nb);
 int	ft_print_mem(void *p);
 int	ft_strlen(char *s);

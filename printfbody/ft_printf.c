@@ -16,21 +16,23 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	var_args;
 	int		count;
+	int		i;
 
 	va_start(var_args, str);
-	while (*str != '\0')
+	i = 0;
+	while (str[i] != '\0')
 	{
-		while (*str != '%' && *str != '\0')
+		while (str[i] != '%' && str[i] != '\0')
 		{
-			count += ft_putchar(*str);
-			str++;
+			count += ft_putchar(str[i]);
+			i++;
 		}
-		if (*str == '%')
+		if (str[i] == '%')
 		{
-			count += ft_see_format(str, var_args);
+			count += ft_see_format(str + i, var_args);
 			if (!ft_see_format(str, var_args))
 				return (0);
-			str += 2;
+			i += 2;
 		}
 	}
 	va_end (var_args);
