@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	if (!s)
 		return (0);
@@ -22,6 +22,22 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	len;
+
+	len = ft_strlen(s);
+	while (1)
+	{
+		if (s[len] == (char)c)
+			return ((char *)s + len);
+		if (len == 0)
+			break ;
+		len--;
+	}
+	return (NULL);
 }
 
 void	ft_bzero(void *s, size_t n)

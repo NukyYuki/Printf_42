@@ -135,7 +135,7 @@ $>
 ```
 - '0' -> fills/preappends width with 0's
     - doesn't work with '-' flag and 'p' (void* aka print adress) specifier;
-    - check other specs it doesnt work with (c,s,x,...);
+    - check other specs it doesnt work with (x,);
 - '.' -> precision field 
     - preappends 0's for numbers;
     - if we are trying to write a number (doesnt matter which base) -> (.n - len_nbr) times 0's; if res <= 0 then no 0s are written

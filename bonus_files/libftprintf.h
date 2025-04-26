@@ -16,8 +16,9 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdlib.h>
 
-typedef struct s_type
+typedef struct s_flags
 {
 	int	width;
 	int	minus;
@@ -35,7 +36,11 @@ int		ft_putstr(char *s);
 int		ft_putnbr_base_hexa(long nb, char *base);
 int		ft_putnbr_decimal(long nb);
 int		ft_print_mem(void *p);
-int		ft_strlen(char *s);
+size_t	ft_strlen(const char *s);
 int		ft_see_format(const char *s, va_list var_args);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strdup(char *src);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strrchr(const char *s, int c);
 
 #endif

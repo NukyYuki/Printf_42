@@ -14,27 +14,31 @@
 #include <limits.h>
 
 //NOTE: printf format
-//  %[flags][width][.precision][lenght]specifier
+//  %[flags][width][.precision]specifier
 
 int	main()
 {
-	unsigned long	k = ULONG_MAX;
-	int	i = INT_MAX;
+	int	i = -424242;
+
+	printf("|||%d|||\n", i);
+	printf("|||% +d|||\n", i);
+	printf("|||%-10d|||\n", i);
+	printf("|||%08.7d|||\n", i);
 	/*printf("|||%d|||\n", i);
 	printf("|||%10d|||\n", i);
-	printf("|||%10d|||\n", i);*/
+	printf("|||%10d|||\n", i);
 	printf("|||%lu|||\n", k);
 	printf("|||%0+10d|||\n", i);
 	printf("|||%p|||\n", &i);
-	printf("|||%s|||\n", "abcde");
-	printf("|||%.10s|||\n\n", "abcde");
+	printf("|||%s|||\n", "abcde");*/
+	//printf("|||% s|||\n\n", "abcde");
 
-	printf("\n\n|||%010d|||\n", i); // fills n_width with 0's
-	printf("|||%10.4d|||\n", i); // preappends (.n - nbr_len) times 0's;
-	printf("|||%.4i|||\n\n", -i); //ignores 0 flag, prio is precision field
+	//printf("\n\n|||%010d|||\n", i); // fills n_width with 0's
+	//printf("|||%10.4d|||\n", i); // preappends (.n - nbr_len) times 0's;
+	//printf("|||%.4i|||\n\n", -i); //ignores 0 flag, prio is precision field
 
-	printf("|||%25p|||\n", &i);
-	printf("|||%#x|||\n", 42);
+	//printf("|||%25p|||\n", &i);
+	//printf("|||%#x|||\n", 42);
 //	printf("Left-justified: %-10d\n", 99);
 //	printf("Forced sign: %+d\n", 99);
 //	printf("Forced sign: %d\n\n", 99);

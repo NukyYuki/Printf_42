@@ -44,35 +44,78 @@ int	ft_strchr(const char *s, char *spec_lst, char *p_spec)
 	return (0);
 }
 
-int	ft_flags(const char *s)
+int	ft_atoi(const char *nptr, int *p_i)
 {
+	int	i;
+	int	res;
+	int	sign;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = res * 10 + (nptr[i] - 48);
+		i++;
+	}
+	*p_i = i;
+	return (res * sign);
+}
+
+t_flags	*flag_check(const char *s)
+{
+	//init aqui a struct com toda a info sobre flags
+	//pre parsing
+	t_flags	*fbool;
+
+	fbool = calloc(1, sizeof(t_flags));
+	if (s[i] == ' ');
+	if (s[i] == '-');
+	if (s[i] == '0');
+	if (s[i] == '.');
+	if (s[i] == '#');
+	if (s[i] == '+');
+	return (fbool);
+}
+
+int	ft_flags(const char *s, va_list	varg)
+{
+	// %[flags][width][.precision]specifier
 	char	*spec_lst;
 	char	*sub; //str will get malloc's to add converted result to
 	char	spec; //the specifier we are dealing with
 	int		count;// the number of flags we need to convert until spec
 	int		i;
-	t_flags	fbool;
+	int		space;
 	
-	spec_lst = "csiuxXp%";
+	// quando passar as flags, tenho que checkar se tou num numero
+	// para ler e calcular a width com a atoi
+	// a atoi provavelmente vai me retornar a posix da string
+	spec_lst = "cspdiuxX%";
 	count = ft_strchr(s, spec_lst, &spec);
 	i = 0;
-	// space flag only works for i and d specs
-	// so we set space to one so it doesnt work for any other specs
-	if (spec != 'i' && spec != 'd')
-		fbool.space = 1;  
 	while (i < count)
 	{
-		if (s[i] == ' ' && fbool.space == 0)
-			ft_putchar(' '), i++;
-		// missing if for width flag(which is just numbers)
-		// we need to call atoi to check width number then add it to malloc
-		// or write the atoi_res -= legth of str or number we want to write
-		// if atoi_res <= len of str or number, no space is written
-		if (s[i] == '-');
-		if (s[i] == '0');
+		if (s[i] == ' ' && (spec == 'i' || spec == 'd'))
+			//mete se um espaco na string pra ser impressa;
+			//
+		if (s[i] == '-' && fbool->minus == 0);
+			//identa-se para a esquerda
+			fbool->minus == 1;
+		if (s[i] == '0' && fbool->minus == 0);
 		if (s[i] == '.');
 		if (s[i] == '#');
 		if (s[i] == '+');
+		i++;
+
 		// this is very WIP btw, this shit gonna be like 3 files full of functions
 		// **copium**
 	}
