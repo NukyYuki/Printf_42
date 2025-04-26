@@ -110,6 +110,12 @@ this is kinda like the `open`, `read` and `close` functions but to variable argu
 #### printf format
 
 `%[flags][width][.precision][lenght]specifier`
+- [flags] -> '-', ' ', '0', '#', '+';
+- [width] -> a value, specifies the *minimum* number of characters to output;
+- [.precision] -> a value, specifies the *maximum* number of characters to output;
+- [lenght] -> we don't need to take lenght into account.
+
+---
 
 - '%n[spec]' -> n is a width (as in spaces) for variable to be printed into, i.e.: for n = 10
 ```
