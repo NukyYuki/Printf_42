@@ -48,6 +48,8 @@ int	ft_putstr(char *s)
 {
 	int	count;
 
+	if (!s)
+		return (ft_putstr("(null)"));
 	count = 0;
 	while (s[count])
 		count += ft_putchar(s[count]);

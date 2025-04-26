@@ -17,10 +17,12 @@ int	ft_printf(const char *str, ...)
 	va_list	var_args;
 	int		count;
 	int		i;
+	int		ret;
 
 	va_start(var_args, str);
 	i = 0;
 	count = 0;
+	ret = 0;
 	while (str[i] != '\0')
 	{
 		while (str[i] != '%' && str[i] != '\0')
@@ -30,9 +32,10 @@ int	ft_printf(const char *str, ...)
 		}
 		if (str[i] == '%')
 		{
-			count += ft_see_format(str + i, var_args);
-			if (!ft_see_format(str, var_args))
+			ret = ft_see_format(str + i, var_args);// using ret here to check for errors on check phase
+			if (ret == -1)
 				return (0);
+			count += ret;// if see_format worked, then count gets the addition of the return value which is the "number of prints"
 			i += 2;
 		}
 	}

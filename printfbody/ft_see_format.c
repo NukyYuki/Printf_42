@@ -33,12 +33,12 @@ int	ft_see_format(const char *s, va_list var_args)
 	else if (s[i + 1] == 'X')
 		count += ft_putnbr_base_hexa(va_arg(var_args, int),
 				"0123456789ABCDEF");
-	else if (s[ + 1] == 'p')
+	else if (s[i + 1] == 'p')
 		count += ft_putnbr_base_hexa(va_arg(var_args, long),
 				"0123456789acdef");
 	else if (s[i + 1] == '%')
 		count += ft_putchar('%');
 	else
-		return (0);
+		return (-1);
 	return (count);
 }
