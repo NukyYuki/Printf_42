@@ -153,7 +153,7 @@ $>
 
 ---
 
-### **General Flag Hierarchy & Interactions** (by deeppseek ai)
+### **General Flag Hierarchy & Interactions** (by deepseek ai)
 1. **`#` (Alternate Form)**  
    - Applies only to: `%x`, `%X`, `%p` (and some others not in your list).  
    - For `%x`/`%X`, it prepends `0x`/`0X` to non-zero values.  
