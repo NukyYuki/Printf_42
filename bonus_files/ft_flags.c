@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/04/24 23:04:12 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/04/26 23:38:54 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,25 @@ int	ft_atoi(const char *nptr, int *p_i)
 	return (res * sign);
 }
 
-t_flags	*flag_check(const char *s)
+t_flags	*flag_check(const char *s, int count)
 {
 	//init aqui a struct com toda a info sobre flags
 	//pre parsing
 	t_flags	*fbool;
+	int		i;
 
+	i = 0;
 	fbool = calloc(1, sizeof(t_flags));
-	if (s[i] == ' ');
-	if (s[i] == '-');
-	if (s[i] == '0');
-	if (s[i] == '.');
-	if (s[i] == '#');
-	if (s[i] == '+');
+	while (i < count)
+	{
+		if (s[i] == ' ')
+			fbool.
+		if (s[i] == '-');
+		if (s[i] == '0');
+		if (s[i] == '.');
+		if (s[i] == '#');
+		if (s[i] == '+');
+	}
 	return (fbool);
 }
 
