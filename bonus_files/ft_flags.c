@@ -44,86 +44,56 @@ int	ft_strchr(const char *s, char *spec_lst, char *p_spec)
 	return (0);
 }
 
-int	ft_atoi(const char *nptr, int *p_i)
-{
-	int	i;
-	int	res;
-	int	sign;
-
-	i = 0;
-	res = 0;
-	sign = 1;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		res = res * 10 + (nptr[i] - 48);
-		i++;
-	}
-	*p_i = i;
-	return (res * sign);
-}
-
 t_flags	*flag_check(const char *s, int count)
 {
-	//init aqui a struct com toda a info sobre flags
-	//pre parsing
 	t_flags	*fbool;
 	int		i;
 
 	i = 0;
-	fbool = calloc(1, sizeof(t_flags));
+	fbool = ft_calloc(1, sizeof(t_flags)); //calloc to set all vars to 0
 	while (i < count)
 	{
-		if (s[i] == ' ')
-			fbool.
-		if (s[i] == '-');
-		if (s[i] == '0');
-		if (s[i] == '.');
-		if (s[i] == '#');
-		if (s[i] == '+');
+		if (s[i] == '#')
+			fbool->hash = 1;
+		else if (s[i] >= '0' && s[i] <= '9')
+		{
+			if (s[i - 1] == '.' || fbool->precision != 0)
+				fbool->precision = fbool->precision * 10 + (s[i] - 48);
+			else
+				fbool->width = fbool->width * 10 + (s[i] - 48);
+		}
+		else if (s[i] == ' ')
+			fbool->space = 1;
+		else if (s[i] == '-')
+			fbool->minus = 1;
+		else if (s[i] == '0')
+			fbool->zeros = 1;
+		else if (s[i] == '+')
+			fbool->plus = 1;
+		i++;
 	}
+	if (fbool->minus == 1 || fbool->precision > 0)
+		fbool->zeros = 0;
+	if (fbool->plus == 1)
+		fbool->space = 0;
 	return (fbool);
 }
 
 int	ft_flags(const char *s, va_list	varg)
 {
 	// %[flags][width][.precision]specifier
+	t_flags	*fbool;
 	char	*spec_lst;
 	char	*sub; //str will get malloc's to add converted result to
 	char	spec; //the specifier we are dealing with
 	int		count;// the number of flags we need to convert until spec
 	int		i;
-	int		space;
 	
-	// quando passar as flags, tenho que checkar se tou num numero
-	// para ler e calcular a width com a atoi
-	// a atoi provavelmente vai me retornar a posix da string
 	spec_lst = "cspdiuxX%";
 	count = ft_strchr(s, spec_lst, &spec);
+	fbool = flag_check(s, count);
 	i = 0;
-	while (i < count)
-	{
-		if (s[i] == ' ' && (spec == 'i' || spec == 'd'))
-			//mete se um espaco na string pra ser impressa;
-			//
-		if (s[i] == '-' && fbool->minus == 0);
-			//identa-se para a esquerda
-			fbool->minus == 1;
-		if (s[i] == '0' && fbool->minus == 0);
-		if (s[i] == '.');
-		if (s[i] == '#');
-		if (s[i] == '+');
-		i++;
+	//if (s[count] ==
 
-		// this is very WIP btw, this shit gonna be like 3 files full of functions
-		// **copium**
-	}
 	return (count);
 }
