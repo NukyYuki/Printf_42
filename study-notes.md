@@ -152,4 +152,57 @@ $>
     - gets ignored (compiles, writes nothing) with negative input;
 
 ---
-TODO: document flag hierarchy (see to-do file)
+
+### **General Flag Hierarchy & Interactions** (by deeppseek ai)
+1. **`#` (Alternate Form)**  
+   - Applies only to: `%x`, `%X`, `%p` (and some others not in your list).  
+   - For `%x`/`%X`, it prepends `0x`/`0X` to non-zero values.  
+   - Overrides default formatting but does not conflict with other flags.  
+
+2. **`+` (Force Sign) and ` ` (Space)**  
+   - Applies to: `%d`, `%i`, `%u` (though `%u` is unsigned, `+`/` ` are usually ignored).  
+   - **Mutually exclusive**: If both `+` and ` ` are given, `+` takes precedence.  
+   - Forces a `+` or space before positive numbers.  
+
+3. **`-` (Left-Justify) and `0` (Zero-Padding)**  
+   - Applies to: All specifiers (but `%c`, `%s`, `%p` behave differently with `0`).  
+   - **Mutually exclusive**: If both `-` and `0` are given, `-` overrides `0`.  
+   - `-` makes output left-aligned (right-padded with spaces).  
+   - `0` pads with zeros (ignored if `-` is present or precision is set for numbers).  
+
+4. **`width` (Minimum Field Width)**  
+   - Defines the **minimum** space the output occupies.  
+   - If the output is shorter than `width`, padding occurs (spaces or zeros, depending on `-`/`0`).  
+   - If longer, `width` is ignored.  
+
+5. **`.` (Precision)**  
+   - For **numbers** (`%d`, `%i`, `%u`, `%x`, `%X`):  
+     - Sets the **minimum number of digits** (pads with zeros if needed).  
+     - Overrides `0` flag (if precision is set, `0` is ignored).  
+   - For **strings** (`%s`):  
+     - Sets the **maximum characters printed** (truncates if longer).  
+   - For **`%p`**, precision is usually ignored.  
+   - For **`%c`**, precision is invalid.  
+
+---
+
+### **Interactions by Specifier**
+| Specifier | `#` | `+`/` ` | `-`/`0` | `width` | `.precision` |
+|-----------|-----|--------|--------|--------|-------------|
+| `%c`      | ❌  | ❌     | ✅     | ✅     | ❌          |
+| `%s`      | ❌  | ❌     | ✅     | ✅     | ✅ (max len) |
+| `%p`      | ❌  | ❌     | ✅     | ✅     | ❌          |
+| `%d`/`%i` | ❌  | ✅     | ✅     | ✅     | ✅ (min digits) |
+| `%u`      | ❌  | ❌     | ✅     | ✅     | ✅ (min digits) |
+| `%x`/`%X` | ✅  | ❌     | ✅     | ✅     | ✅ (min digits) |
+| `%%`      | ❌  | ❌     | ✅     | ✅     | ❌          |
+
+---
+
+### **Key Takeaways**
+1. **`-` beats `0`**: Left-justification disables zero-padding.  
+2. **Precision beats `0`**: For numbers, `.precision` forces digit padding, ignoring `0`.  
+3. **`+` beats ` `**: Explicit sign takes precedence over space.  
+4. **`#` is niche**: Only affects `%x`, `%X`, `%p` (not `%d`, `%s`, etc.).  
+5. **`%s` and precision**: Precision truncates strings (unlike numbers, where it pads).  
+
