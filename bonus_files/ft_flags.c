@@ -66,7 +66,7 @@ t_flags	*flag_check(const char *s, int count)
 			fbool->space = 1;
 		else if (s[i] == '-')
 			fbool->minus = 1;
-		else if (s[i] == '0')
+		else if (s[i] == '0' && s[i - 1] != '.')
 			fbool->zeros = 1;
 		else if (s[i] == '+')
 			fbool->plus = 1;
