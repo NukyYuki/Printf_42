@@ -44,6 +44,7 @@ char	*ft_strdup(char *src);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strrchr(const char *s, int c);
 t_flags	*flag_check(const char *s, int count);
+char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long n, char *base);
 
 #endif
