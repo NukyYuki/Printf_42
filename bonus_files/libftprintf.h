@@ -20,14 +20,15 @@
 
 typedef struct s_flags
 {
-	int		precision;
-	bool	in_precision;
-	int		width;
-	int		minus;
-	int		zeros;
-	int		hash;
-	int		space;
-	int		plus;
+	int	width;
+	int	precision;
+	int	in_precision;
+	int	in_width;
+	int	minus;
+	int	zeros;
+	int	hash;
+	int	space;
+	int	plus;
 }			t_flags;
 
 void	ft_bzero(void *s, size_t n);

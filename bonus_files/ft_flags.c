@@ -31,13 +31,13 @@ int	ft_strchr(const char *s, char *spec_lst, char *p_spec)
 	int	i;
 
 	i = 0;
-	while (check_spec(s[i], spec_lst))
+	while (check_spec(s[i], spec_lst) == 0)
 	{
 		if (s[i] == '\0')
 			break ;
 		i++;
 	}
-	if (!check_spec(s[i], spec_lst))
+	if (check_spec(s[i], spec_lst) == 1)
 		return (i);
 	i = 0;
 	p_spec = (char *)s + i;
@@ -51,13 +51,19 @@ t_flags	*flag_check(const char *s, int count)
 
 	i = 0;
 	fbool = ft_calloc(1, sizeof(t_flags)); //calloc to set all vars to 0
+// NOTE:
+	//printf("|||%0+10d|||\n", i);
+	//printf("|||%010d|||\n", i);
+	//%>||0000000042||
 	while (i < count)
 	{
 		if (s[i] == '#')
 			fbool->hash = 1;
+		else if	(s[i] == '.')
+			fbool->in_precision = 1;
 		else if (s[i] >= '0' && s[i] <= '9')
 		{
-			if (s[i - 1] == '.' || fbool->precision != 0)
+			if (fbool->in_precision == 1)
 				fbool->precision = fbool->precision * 10 + (s[i] - 48);
 			else
 				fbool->width = fbool->width * 10 + (s[i] - 48);
@@ -66,13 +72,13 @@ t_flags	*flag_check(const char *s, int count)
 			fbool->space = 1;
 		else if (s[i] == '-')
 			fbool->minus = 1;
-		else if (s[i] == '0' && s[i - 1] != '.')
+		else if (s[i] == '0' && fbool->in_precision == 0)
 			fbool->zeros = 1;
 		else if (s[i] == '+')
 			fbool->plus = 1;
 		i++;
 	}
-	if (fbool->minus == 1 || fbool->precision > 0)
+	if (fbool->minus == 1 || fbool->in_precision == 1)
 		fbool->zeros = 0;
 	if (fbool->plus == 1)
 		fbool->space = 0;
