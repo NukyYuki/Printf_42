@@ -20,24 +20,24 @@ char	*ft_see_format(const char *s, va_list var_args)
 
 	count = 0;
 	i = 0;
-	if (s[i + 1] == 'c')
+	if (*s == 'c')
 		return_val = ft_strdup((char *)&va_arg(varg, int));
-	else if (s[i + 1] == 's')
+	else if (*s == 's')
 		return_val = ft_strdup(va_arg(varg, char *));
-	else if (s[i + 1] == 'i' || s[i + 1] == 'd')
+	else if (*s == 'i' || *s == 'd')
 		return_val = ft_itoa_base(va_arg(varg, unsigned long));
-	else if (s[i + 1] == 'u')
+	else if (*s == 'u')
 		return_val = ft_itoa_base(va_arg(varg, unsigned long));
-	else if (s[i + 1] == 'x')
+	else if (*s == 'x')
 		return_val = ft_itoa_base(va_arg(varg, unsigned long);
 				"0123456789abcdef");
-	else if (s[i + 1] == 'X')
+	else if (*s == 'X')
 		return_val = ft_itoa_base(va_arg(varg, unsigned long);
 				"0123456789ABCDEF");
-	else if (s[i + 1] == 'p')
+	else if (*s == 'p')
 		return_val = ft_itoa_base(va_arg(varg, unsigned long);
 				"0123456789abcdef");
-	else if (s[i + 1] == '%')
+	else if (*s == '%')
 			return_val = ft_strdup("%");
 	return (return_val);
 }

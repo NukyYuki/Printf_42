@@ -37,7 +37,7 @@ int	ft_see_format(const char *s, va_list var_args)
 	{
 		count += ft_putstr("0x");
 		count += ft_putnbr_base_pointer(va_arg(var_args, unsigned long),
-				"0123456789acdef");
+				"0123456789abcdef");
 	}
 	else if (s[i + 1] == '%')
 		count += ft_putchar('%');

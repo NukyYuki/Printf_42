@@ -18,7 +18,7 @@ int	ft_putnbr_base_pointer(unsigned long nb, char *base)
 
 	count = 0;
 	if (nb > ((unsigned long)ft_strlen(base) - 1))
-		count += ft_putnbr_base_hexa(nb / (ft_strlen(base)), base);
+		count += ft_putnbr_base_pointer(nb / (ft_strlen(base)), base);
 	count += ft_putchar(base[nb % (ft_strlen(base))]);
 	return (count);
 }

@@ -74,7 +74,7 @@ int	main(void)
 {
 		char	*s;
 
-		s = ft_itoa_base(42, "0123456789abcdef");
+		s = ft_itoa_base(-42, "0123456789abcdef");
 		printf("%s", s);
 		free(s);
 		return 0;
