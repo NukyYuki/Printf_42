@@ -8,3 +8,4 @@
    - a **new string** that is the result of **ret** with the flags saved in *fbool* applied to it;
    - we need the *specifier* because we want the *flags* to behave according to it;
 - [ ] use the free() func when mem allocation is used
+- [ ] deal with '%p', currently not printing correct adress when compared with printf();
