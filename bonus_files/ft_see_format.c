@@ -11,14 +11,27 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <string.h>
+
+void	ft_init(char **return_val, char **base, char *c, int spec)
+{
+	*c = 0;
+	*return_val = NULL;
+	if (spec == 'X')
+		*base = "0123456789ABCDEF";
+	else if (spec == 'x' || spec == 'p')
+		*base = "0123456789abcdef";
+	else
+		*base = "0123456789";
+}
 
 char	*ft_see_format(const char *s, va_list varg)
 {
-	int		count;
 	char	c;
 	char	*return_val;
+	char	*base;
 
-	count = 0;
+	ft_init(&return_val, &base, &c, *s);
 	if (*s == 'c')
 	{
 		c = va_arg(varg, int);
@@ -27,15 +40,15 @@ char	*ft_see_format(const char *s, va_list varg)
 	else if (*s == 's')
 		return (return_val = ft_strdup(va_arg(varg, char *)));
 	else if (*s == 'i' || *s == 'd')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), "0123456789"));
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == 'u')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), "0123456789"));
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == 'x')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), "0123456789abcdef"));
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == 'X')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), "0123456789ABCDEF"));
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == 'p')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), "0123456789abcdef"));
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == '%')
 		return (return_val = ft_strdup("%"));
 	return (NULL);
