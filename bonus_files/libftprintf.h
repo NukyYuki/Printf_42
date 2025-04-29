@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 18:53:08 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:09:55 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int		ft_putstr(char *s);
 int		ft_putnbr_base_hexa(long nb, char *base);
 int		ft_putnbr_decimal(long nb);
 size_t	ft_strlen(const char *s);
-int		ft_see_format(const char *s, va_list var_args);
+char	*ft_see_format(const char *s, va_list var_args);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strrchr(const char *s, int c);
 t_flags	*flag_check(const char *s, int count);
-char	*ft_itoa_base(int n, char *base);
+char	*ft_itoa_base(unsigned long n, char *base);
 
 #endif

@@ -6,62 +6,58 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:39:48 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 19:10:15 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:04:19 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static size_t	lengths(int n, int base_len)
+static size_t	lengths(unsigned long n, int base_len)
 {
-	long		nb;
 	size_t		len;
 
 	len = 0;
-	nb = n;
-	if (nb == 0)
+	if (n == 0)
 		len++;
-	if (nb < 0)
+	if (n < 0)
 	{
-		nb = -nb;
+		n = -n;
 		len++;
 	}
-	while (nb > 0)
+	while (n > 0)
 	{
-		nb = nb / base_len;
+		n = n / base_len;
 		len++;
 	}
 	return (len);
 }
 
-static char	*putnbr_str(int n, char *str, char *base, int base_len)
+static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 {
-	long	nb;
 	size_t	i;
 	size_t	len;
 
-	nb = n;
 	len = lengths(n, base_len);
 	i = 0;
 	str[len] = '\0';
 	len--;
-	if (nb < 0)
+	if (n < 0)
 	{
-		nb = -nb;
+		n = -n;
 		str[i] = '-';
 		i++;
 	}
-	while (nb >= base_len)
+	while (n >= base_len)
 	{
-		str[len] = base[nb % base_len];
-		nb /= base_len;
+		str[len] = base[n % base_len];
+		n /= base_len;
 		len--;
 	}
-	str[i] = base[nb];
+	str[i] = base[n];
 	return (str);
 }
 
-char	*ft_itoa_base(int n, char *base)
+char	*ft_itoa_base(unsigned long n, char *base)
 {
 	char	*itoa;
 	int		base_len;
@@ -73,7 +69,7 @@ char	*ft_itoa_base(int n, char *base)
 	putnbr_str(n, itoa, base, base_len);
 	return (itoa);
 }
-#include <stdio.h>
+/*#include <stdio.h>
 int	main(void)
 {
 		char	*s;
@@ -82,4 +78,4 @@ int	main(void)
 		printf("%s", s);
 		free(s);
 		return 0;
-}
+}*/

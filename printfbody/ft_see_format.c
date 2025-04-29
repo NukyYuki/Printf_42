@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:53:50 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 17:19:50 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:45:40 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_see_format(const char *s, va_list var_args)
 	else if (s[i + 1] == 'p')
 	{
 		count += ft_putstr("0x");
-		count += ft_putnbr_base_hexa(va_arg(var_args, unsigned long),
+		count += ft_putnbr_base_pointer(va_arg(var_args, unsigned long),
 				"0123456789acdef");
 	}
 	else if (s[i + 1] == '%')
