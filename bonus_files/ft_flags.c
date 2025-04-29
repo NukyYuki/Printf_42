@@ -51,29 +51,35 @@ t_flags	*flag_check(const char *s, int count)
 
 	i = 0;
 	fbool = ft_calloc(1, sizeof(t_flags)); //calloc to set all vars to 0
-// NOTE:
-	//printf("|||%0+10d|||\n", i);
-	//printf("|||%010d|||\n", i);
-	//%>||0000000042||
 	while (i < count)
 	{
 		if (s[i] == '#')
 			fbool->hash = 1;
 		else if	(s[i] == '.')
 			fbool->in_precision = 1;
-		else if (s[i] >= '0' && s[i] <= '9')
+		else if (s[i] >= '1' && s[i] <= '9')
 		{
 			if (fbool->in_precision == 1)
 				fbool->precision = fbool->precision * 10 + (s[i] - 48);
 			else
 				fbool->width = fbool->width * 10 + (s[i] - 48);
+			fbool->in_value = 1;
 		}
 		else if (s[i] == ' ')
 			fbool->space = 1;
 		else if (s[i] == '-')
 			fbool->minus = 1;
-		else if (s[i] == '0' && fbool->in_precision == 0)
-			fbool->zeros = 1;
+		else if (s[i] == '0')
+		{
+			if (!fbool->in_precision && !fbool->in_value && fbool->zeros == 0)
+				fbool->zeros = 1;
+			else if (fbool->in_precision)
+				fbool->precision = fbool->precision * 10 + (s[i] - 48);
+			else
+				fbool->width = fbool->width * 10 + (s[i] - 48);
+			fbool->in_value = 1;
+
+		}
 		else if (s[i] == '+')
 			fbool->plus = 1;
 		i++;
@@ -94,12 +100,14 @@ int	ft_flags(const char *s, va_list	varg)
 	char	spec; //the specifier we are dealing with
 	int		count;// the number of flags we need to convert until spec
 	int		i;
+	va_list	vcopy;
 	
 	spec_lst = "cspdiuxX%";
+	va_copy(varg, vcopy);
 	count = ft_strchr(s, spec_lst, &spec);
 	fbool = flag_check(s, count);
 	i = 0;
-	//if (s[count] ==
 
+	va_end(vcopy);
 	return (count);
 }

@@ -23,7 +23,7 @@ typedef struct s_flags
 	int	width;
 	int	precision;
 	int	in_precision;
-	int	in_width;
+	int	in_value;
 	int	minus;
 	int	zeros;
 	int	hash;
