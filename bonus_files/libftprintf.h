@@ -43,6 +43,6 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strrchr(const char *s, int c);
-t_flag	*flag_check(const char *s, int count);
+t_flags	*flag_check(const char *s, int count);
 
 #endif

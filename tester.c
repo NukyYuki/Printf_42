@@ -22,7 +22,7 @@ int	main()
 
 	printf("|||%d|||\n", i);
 	printf("|||%0+10d|||\n", i);
-	printf("|||%010.5d||\n", i);
+	printf("|||%#-9.8x||\n", i);
 //	printf("|||%08.7d|||\n", i);
 	/*printf("|||%d|||\n", i);
 	printf("|||%10d|||\n", i);
