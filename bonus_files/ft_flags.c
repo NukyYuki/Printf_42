@@ -6,9 +6,17 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/04/26 23:38:54 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/04/30 01:09:11 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+/*
+*  WARNING: 
+*  THESE FUNCTIONS HERE ARE OUTDATED!
+*  NEW VERSIONS ARE IN bonus_files/ft_flags.c
+*  WILL UPDATE THE ONES HERE WHEN THEIR NEWER COUNTERPARTS
+*  ARE FULLY TESTED.
+*  NEED TO UPDATE THE DECLARATIONS IN libftprintf.h 
+*/
 
 #include "libftprintf.h"
 

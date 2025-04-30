@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 20:09:55 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/04/30 01:09:06 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strrchr(const char *s, int c);
-t_flags	*flag_check(const char *s, int count);
+t_flags	*flag_check(const char *s, int *count);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long n, char *base);
 

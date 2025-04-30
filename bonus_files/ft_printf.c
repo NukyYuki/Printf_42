@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mipinhei <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 14:29:33 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 17:27:19 by mipinhei         ###   ########.fr       */
+/*   Created: 2025/04/30 00:56:10 by manmaria          #+#    #+#             */
+/*   Updated: 2025/04/30 00:56:12 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_spec(char const c, char *spec_lst);
 
-t_flags	*flag_check(const char *s, int count)
+t_flags	*flag_check(const char *s, int *count)
 {
 	t_flags	*fbool;
 	int		i;
@@ -58,6 +58,7 @@ t_flags	*flag_check(const char *s, int count)
 		fbool->zeros = 0;
 	if (fbool->plus == 1)
 		fbool->space = 0;
+	*count = i;
 	return (fbool);
 }
 
@@ -93,6 +94,14 @@ char	*ft_strchr(const char *s)
 	return (NULL);
 }
 
+char	*ft_flags(char *s, char *ret_val, int *p_i, char spec)
+{
+	t_flags	*flag_info;
+
+	flag_info = flag_check(s, p_i);
+
+	return (NULL);
+}
 
 int	ft_printf(const char *str, ...)
 {
@@ -115,8 +124,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			ret = ft_see_format(ft_strchr(str + i + 1), var_args);
-			//count += ret;// if see_format worked, then count gets the addition
-			//i += 2;
+			ft_flag_formater()
 		}
 	}
 	va_end (var_args);
