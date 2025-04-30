@@ -28,15 +28,15 @@ int	ft_see_format(const char *s, va_list var_args)
 	else if (s[i + 1] == 'u')
 		count += ft_putnbr_decimal(va_arg(var_args, unsigned int));
 	else if (s[i + 1] == 'x')
-		count += ft_putnbr_base_hexa(va_arg(var_args, int),
+		count += ft_putnbr_base_hexa(va_arg(var_args, unsigned int),
 				"0123456789abcdef");
 	else if (s[i + 1] == 'X')
-		count += ft_putnbr_base_hexa(va_arg(var_args, int),
+		count += ft_putnbr_base_hexa(va_arg(var_args, unsigned int),
 				"0123456789ABCDEF");
 	else if (s[i + 1] == 'p')
 	{
 		count += ft_putstr("0x");
-		count += ft_putnbr_base_pointer(va_arg(var_args, unsigned long),
+		count += ft_putnbr_base_pointer(va_arg(var_args, long),
 				"0123456789abcdef");
 	}
 	else if (s[i + 1] == '%')

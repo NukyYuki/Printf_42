@@ -12,13 +12,11 @@
 
 #include "libftprintf.h"
 
-int	ft_putnbr_base_hexa(long nb, char *base)
+int	ft_putnbr_base_hexa(unsigned int nb, char *base)
 {
 	int		count;
 
 	count = 0;
-	if (nb < 0)
-		nb += 4294967295 + 1;
 	if (nb > ((unsigned)ft_strlen(base) - 1))
 		count += ft_putnbr_base_hexa(nb / (ft_strlen(base)), base);
 	count += ft_putchar(base[nb % (ft_strlen(base))]);
