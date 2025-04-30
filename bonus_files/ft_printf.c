@@ -56,7 +56,7 @@ t_flags	*ft_flag_check(const char *s, int *count)
 	}
 	if (fbool->minus == 1 || fbool->in_precision == 1)
 		fbool->zeros = 0;
-	if (fbool->plus == 1)
+	if (fbool->plus == 1 || fbool->width > 0)
 		fbool->space = 0;
 	*count = i; // or *count += i; if variable flag_skip is not used in printf();
 	return (fbool);
@@ -94,11 +94,6 @@ char	ft_strchr(const char *s)
 	return (0); //nsei se devia retornar '\0' aqui ou outra coisa
 }
 
- //TODO:
-	//ESTA FUNCAO VAI UTILIZAR A INFO NA VAR TIPO t_flags
-	//E MODIFICAR A STR ret PARA A O FORMATO DAS FLAGS.
-	//PRECISAMOS DE SABER QUAL O SPEC QUE ESTA' DEPOIS DAS
-	//FLAGS PARA FORMATARMOS ACCORDINGLY
 //											  s[*p_i] = '%'
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 {
@@ -107,16 +102,30 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	int		len;
 
 	len = ft_strlen(ret);
-	if (spec == 'p')
-		flag_info->hash = 1;
 	tmp = ret;
 	flag_info = ft_flag_check(s, p_fs);
-	if (flag_info->hash == 1)
-		len += 2;
+	if (spec == 'p')
+		flag_info->hash = 1;
 	if (flag_info->in_precision == 1)
+	{
 		if (flag_info->precision > len && spec != 's')
-			len += flag_info->precision - len;
-		else // LEN == PRECISION
+		{
+			len = flag_info->precision;
+			ret = ft_setzero(ret, tmp, len, '0');
+			tmp = ret;
+		}
+		else if (flag_info->precision < len && spec == 's')
+			len = flag_info->precision;
+	}
+	if (flag_info->hash == 1)
+		ft_set_hash(ret, tmp, len + 2, spec);
+	else if (flag_info->plus == 1)
+	{
+		ft_setzero(ret, tmp, len + 1, '+');
+		tmp = ret;
+	}
+/*	nova func a partir daqui  */
+
 	return (NULL);
 }
 

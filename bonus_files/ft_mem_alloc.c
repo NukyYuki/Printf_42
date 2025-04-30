@@ -38,24 +38,27 @@ void	ft_bzero(void *s, size_t n)
 		p_s[i++] = '\0';
 }
 
-char	*ft_setzero(char *ret, size_t width)
+char	*ft_setzero(char *ret, char *tmp, size_t len)//char *set)
 {
 	char	*p_s;
 	size_t			i;
 
-	p_s = malloc((width + 1) * sizeof(char));
+	p_s = malloc((len + 1) * sizeof(char));
 	if (!p_s)
 		return (NULL);
 	i = 0;
-	while (i < (width - ft_strlen(ret)))
+	while (i < (len - ft_strlen(ret)))
 		p_s[i] = '0';
-	while ( i < width)
-		p_s[i] = ret[i - width];
-	s[i] = '\0';
+	while (i < len)
+		p_s[i] = ret[i - len];
+	p_s[i] = '\0';
+	free(tmp);
 	return (p_s);
 }
 
-char	*ft_setspace(char *ret, size_t width)
+/*			FOR WIDTH			*/
+char	*ft_setspace_left(char *ret, size_t width);
+char	*ft_setspace_right(char *ret, size_t width)
 {
 	char	*p_s;
 	size_t			i;
@@ -68,6 +71,6 @@ char	*ft_setspace(char *ret, size_t width)
 		p_s[i] = ' ';
 	while ( i < width)
 		p_s[i] = ret[i - width];
-	s[i] = '\0';
+	p_s[i] = '\0';
 	return (p_s);
 }

@@ -20,7 +20,7 @@ int	main()
 {
 	int	i = 42;
 	//|||0xffffffd6|||
-	printf("|||%0#10.5x|||\n", i);
+	printf("|||%10.3x|||\n", i);
 //	printf("|||%020p|||\n", &i);
 	//printf("|||%0+10d|||\n", i);
 //	printf("|||%#-9.8x||\n", i);
