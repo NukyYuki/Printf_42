@@ -105,6 +105,8 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	t_flags	*flag_info;
 	char	*tmp;
 
+	if (spec == 'p')
+		flag_info->hash = 1;
 	tmp = ret;
 	flag_info = ft_flag_check(s, p_fs);
 	if (
