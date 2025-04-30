@@ -56,6 +56,30 @@ char	*ft_setzero(char *ret, char *tmp, size_t len)//char *set)
 	return (p_s);
 }
 
+char	*ft_set_hash(char *ret, char *tmp, size_t len, char spec)
+{
+	char	*p_s;
+	size_t	i;
+
+	p_s = malloc((len + 1) * sizeof(char));
+	if (!p_s)
+		return (NULL);
+	i = 2;
+	p_s[0] = 0;
+	if (spec == 'X')
+		p_s[1] = 'X';
+	else
+		p_s[1] = 'x';
+	while (i < len)
+	{
+		p_s[i] = ret[len - i];
+		i++;
+	}
+	p_s[i] = '\0';
+	free(tmp);
+	return (p_s);
+}
+
 /*			FOR WIDTH			*/
 char	*ft_setspace_left(char *ret, size_t width);
 char	*ft_setspace_right(char *ret, size_t width)
@@ -68,9 +92,12 @@ char	*ft_setspace_right(char *ret, size_t width)
 		return (NULL);
 	i = 0;
 	while (i < (width - ft_strlen(ret)))
-		p_s[i] = ' ';
-	while ( i < width)
-		p_s[i] = ret[i - width];
+		p_s[i++] = ' ';
+	while (i < width)
+	{
+		p_s[i] = ret[width - i];
+		i++;
+	}
 	p_s[i] = '\0';
 	return (p_s);
 }

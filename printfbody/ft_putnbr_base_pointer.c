@@ -16,6 +16,8 @@ int	ft_putnbr_base_pointer(long nb, char *base)
 {
 	int		count;
 
+	if (!nb)
+		count += ft_putstr("nil");
 	count = 0;
 	if (nb > ((long)ft_strlen(base) - 1))
 		count += ft_putnbr_base_pointer(nb / (ft_strlen(base)), base);

@@ -44,9 +44,11 @@ char	*ft_strdup(char *src);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strrchr(const char *s, int c);
 t_flags	*ft_flag_check(const char *s, int *count);
+char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long n, char *base);
 char	*ft_setzero(char *ret, size_t width);
 char	*ft_setspace(char *ret, size_t width);
+char	*ft_set_hash(char *ret, char *tmp, size_t len, char spec);
 
 #endif
