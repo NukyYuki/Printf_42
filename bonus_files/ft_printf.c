@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 00:56:10 by manmaria          #+#    #+#             */
-/*   Updated: 2025/04/30 00:56:12 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:18:58 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,17 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 {
 	t_flags	*flag_info;
 	char	*tmp;
+	int		len;
 
+	len = ft_strlen(ret);
 	if (spec == 'p')
 		flag_info->hash = 1;
 	tmp = ret;
 	flag_info = ft_flag_check(s, p_fs);
-	if (
+	if (flag_info->hash == 1)
+		len += 2;
+	if (flag_info->precision > len)
+		len += flag_info->precision - len;
 	return (NULL);
 }
 

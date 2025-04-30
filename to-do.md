@@ -14,7 +14,7 @@
 - [ ] determine final length of the string we are trying to create, WITHOUT WIDTH:
    - ret string
    - '#'
-   - .precision
+   - .precision (number or string);
    - '+' && ' '
 - [ ] so that we can add width if > than strlen(final_str) AND
    - padd with '0's if needed

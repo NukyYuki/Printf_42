@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/30 01:09:06 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:18:19 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ char	*ft_strrchr(const char *s, int c);
 t_flags	*ft_flag_check(const char *s, int *count);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long n, char *base);
+char	*ft_setzero(char *ret, size_t width);
+char	*ft_setspace(char *ret, size_t width);
 
 #endif
