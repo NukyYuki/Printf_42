@@ -91,7 +91,7 @@ char	*ft_strchr(const char *s)
 	{
 		return ((char *)s + i);
 	}
-	return (NULL);
+	return (NULL); //nsei se retorna nulo aqui
 }
 
 char	*ft_flags(char *s, char *ret_val, int *p_i, char spec)
@@ -99,6 +99,11 @@ char	*ft_flags(char *s, char *ret_val, int *p_i, char spec)
 	t_flags	*flag_info;
 
 	flag_info = flag_check(s, p_i);
+	//TODO:
+	//ESTA FUNCAO VAI UTILIZAR A INFO NA VAR TIPO t_flags
+	//E MODIFICAR A STR ret_val PARA A O FORMATO DAS FLAGS
+	//PRECISAMOS DE SABER QUAL O SPEC QUE ESTA DEPOIS DAS
+	//FLAGS PARA FORMATARMOS ACCORDINGLY
 
 	return (NULL);
 }
@@ -124,7 +129,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			ret = ft_see_format(ft_strchr(str + i + 1), var_args);
-			ft_flag_formater()
+			//ft_flags(str + i + 1, ret, &i, ft_str(str+)
 		}
 	}
 	va_end (var_args);
