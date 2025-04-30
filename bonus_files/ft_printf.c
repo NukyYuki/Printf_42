@@ -14,13 +14,13 @@
 
 int	check_spec(char const c, char *spec_lst);
 
-t_flags	*flag_check(const char *s, int *count)
+t_flags	*ft_flag_check(const char *s, int *count)
 {
 	t_flags	*fbool;
 	int		i;
 
 	i = 0;
-	fbool = ft_calloc(1, sizeof(t_flags)); //calloc to set all vars to 0
+	fbool = ft_calloc(1, sizeof(t_flags));
 	while (check_spec(s[i], "cspdiuxX%") == 0)
 	{
 		if (s[i] == '#')
@@ -41,7 +41,7 @@ t_flags	*flag_check(const char *s, int *count)
 			fbool->minus = 1;
 		else if (s[i] == '0')
 		{
-			if (!fbool->in_precision && !fbool->in_value && fbool->zeros == 0)
+			if (!fbool->in_precision && !fbool->in_value && !fbool->zeros)
 				fbool->zeros = 1;
 			else if (fbool->in_precision)
 				fbool->precision = fbool->precision * 10 + (s[i] - 48);
@@ -58,7 +58,7 @@ t_flags	*flag_check(const char *s, int *count)
 		fbool->zeros = 0;
 	if (fbool->plus == 1)
 		fbool->space = 0;
-	*count = i;
+	*count = i; // or *count += i; if variable flag_skip is not used in printf();
 	return (fbool);
 }
 
@@ -76,7 +76,7 @@ int	check_spec(char const c, char *spec_lst)
 	return (0);
 }
 
-char	*ft_strchr(const char *s)
+char	ft_strchr(const char *s)
 {
 	int	i;
 
@@ -89,22 +89,25 @@ char	*ft_strchr(const char *s)
 	}
 	if (check_spec(s[i], "cspdiuxX%") == 1)
 	{
-		return ((char *)s + i);
+		return ((char)s[i]);
 	}
-	return (NULL); //nsei se retorna nulo aqui
+	return (0); //nsei se devia retornar '\0' aqui ou outra coisa
 }
 
-char	*ft_flags(char *s, char *ret_val, int *p_i, char spec)
+ //TODO:
+	//ESTA FUNCAO VAI UTILIZAR A INFO NA VAR TIPO t_flags
+	//E MODIFICAR A STR ret PARA A O FORMATO DAS FLAGS.
+	//PRECISAMOS DE SABER QUAL O SPEC QUE ESTA' DEPOIS DAS
+	//FLAGS PARA FORMATARMOS ACCORDINGLY
+//											  s[*p_i] = '%'
+char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 {
 	t_flags	*flag_info;
+	char	*tmp;
 
-	flag_info = flag_check(s, p_i);
-	//TODO:
-	//ESTA FUNCAO VAI UTILIZAR A INFO NA VAR TIPO t_flags
-	//E MODIFICAR A STR ret_val PARA A O FORMATO DAS FLAGS
-	//PRECISAMOS DE SABER QUAL O SPEC QUE ESTA DEPOIS DAS
-	//FLAGS PARA FORMATARMOS ACCORDINGLY
-
+	tmp = ret;
+	flag_info = ft_flag_check(s, p_fs);
+	if (
 	return (NULL);
 }
 
@@ -128,8 +131,11 @@ int	ft_printf(const char *str, ...)
 		}
 		if (str[i] == '%')
 		{
-			ret = ft_see_format(ft_strchr(str + i + 1), var_args);
-			//ft_flags(str + i + 1, ret, &i, ft_str(str+)
+			char spec = ft_strchr(str + i + 1);
+			ret = ft_see_format(&spec, var_args);
+			int flag_skip = 0;
+			ft_flags(str + i, ret, &flag_skip, spec);
+			i += flag_skip;
 		}
 	}
 	va_end (var_args);
