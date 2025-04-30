@@ -111,7 +111,7 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		if (flag_info->precision > len && spec != 's')
 		{
 			len = flag_info->precision;
-			ret = ft_setzero(ret, tmp, len, '0');
+			ret = ft_set_char(ret, tmp, len, '0');
 			tmp = ret;
 		}
 		else if (flag_info->precision < len && spec == 's')
@@ -121,7 +121,7 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		ft_set_hash(ret, tmp, len + 2, spec);
 	else if (flag_info->plus == 1)
 	{
-		ft_setzero(ret, tmp, len + 1, '+');
+		ft_set_char(ret, tmp, len + 1, '+');
 		tmp = ret;
 	}
 /*	nova func a partir daqui  */

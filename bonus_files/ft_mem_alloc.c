@@ -38,7 +38,7 @@ void	ft_bzero(void *s, size_t n)
 		p_s[i++] = '\0';
 }
 
-char	*ft_setzero(char *ret, char *tmp, size_t len)//char *set)
+char	*ft_set_char(char *ret, char *tmp, size_t len, char set)
 {
 	char	*p_s;
 	size_t			i;
@@ -48,7 +48,7 @@ char	*ft_setzero(char *ret, char *tmp, size_t len)//char *set)
 		return (NULL);
 	i = 0;
 	while (i < (len - ft_strlen(ret)))
-		p_s[i] = '0';
+		p_s[i] = set;
 	while (i < len)
 		p_s[i] = ret[i - len];
 	p_s[i] = '\0';
