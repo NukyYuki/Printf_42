@@ -96,33 +96,26 @@ char	ft_strchr(const char *s)
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 {
 	t_flags	*flag_info;
-	char	*tmp;
-	int		len;
+	size_t	len;
 
 	len = ft_strlen(ret);
-	tmp = ret;
 	flag_info = ft_flag_check(s, p_fs);
-	if (spec == 'p')
-		flag_info->hash = 1;
-	if (flag_info->in_precision == 1)
+	if (flag_info->in_precision == 1 && spec != 'p')
 	{
 		if (flag_info->precision > len && spec != 's')
 		{
 			len = flag_info->precision;
-			ret = ft_setchar_ra(ret, tmp, len, '0');
-			tmp = ret;
+			ret = ft_setchar_ra(ret, len, '0');
 		}
 		else if (flag_info->precision < len && spec == 's')
 			len = flag_info->precision;
 	}
-	if (flag_info->hash == 1)
-		ft_sethash(ret, tmp, len + 2, spec);
+	if (flag_info->hash == 1 || spec == 'p')
+		ret = ft_sethash(ret, &len, spec);
 	else if (flag_info->plus == 1)
-	{
-		ret = ft_setchar_ra(ret, tmp, len + 1, '+');
-		tmp = ret;
-	}
+		ret = ft_setchar_ra(ret, ++len, '+');
+	if (flag_info->space == 1 && (spec == 'd' || spec == 'i'))
+		ret = ft_setchar_ra(ret, ++len, ' ');
 /*	nova func a partir daqui  */
-
 	return (ret);
 }

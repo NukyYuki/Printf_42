@@ -20,15 +20,15 @@
 
 typedef struct s_flags
 {
-	int	width;
-	int	precision;
-	int	in_precision;
-	int	in_value;
-	int	minus;
-	int	zeros;
-	int	hash;
-	int	space;
-	int	plus;
+	size_t	width;
+	size_t	precision;
+	int		in_precision;
+	int		in_value;
+	int		minus;
+	int		zeros;
+	int		hash;
+	int		space;
+	int		plus;
 }			t_flags;
 
 int		ft_printf(const char *str, ...);
@@ -45,8 +45,8 @@ t_flags	*ft_flag_check(const char *s, int *count);
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long n, char *base);
-char	*ft_setchar_ra(char *ret, char *tmp, size_t len, char set);
+char	*ft_setchar_ra(char *ret, size_t len, char set);
 char	*ft_setspace_la(char *ret, size_t width);
-char	*ft_sethash(char *ret, char *tmp, size_t len, char spec);
+char	*ft_sethash(char *ret, size_t *len, char spec);
 
 #endif

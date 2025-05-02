@@ -12,22 +12,7 @@
 
 #include "libftprintf.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*arr;
-	size_t	mult;
-
-	if (nmemb != 0 && size != 0 && (nmemb > ((size_t)-1 / size)))
-		return (NULL);
-	mult = nmemb * size;
-	arr = malloc(nmemb * size);
-	if (!arr)
-		return (NULL);
-	ft_bzero(arr, mult);
-	return (arr);
-}
-
-char	*ft_setchar_ra(char *ret, char *tmp, size_t len, char set)
+char	*ft_setchar_ra(char *ret, size_t len, char set)
 {
 	char	*p_s;
 	size_t	i;
@@ -44,16 +29,17 @@ char	*ft_setchar_ra(char *ret, char *tmp, size_t len, char set)
 		i++;
 	}
 	p_s[i] = '\0';
-	free(tmp);
+	free(ret);
 	return (p_s);
 }
 
-char	*ft_set_hash(char *ret, char *tmp, size_t len, char spec)
+char	*ft_sethash(char *ret, size_t *len, char spec)
 {
 	char	*p_s;
 	size_t	i;
 
-	p_s = malloc((len + 1) * sizeof(char));
+	*len += 2;
+	p_s = malloc((*len + 1) * sizeof(char));
 	if (!p_s)
 		return (NULL);
 	i = 2;
@@ -62,13 +48,13 @@ char	*ft_set_hash(char *ret, char *tmp, size_t len, char spec)
 		p_s[1] = 'X';
 	else
 		p_s[1] = 'x';
-	while (i < len)
+	while (i < *len)
 	{
-		p_s[i] = ret[len - i];
+		p_s[i] = ret[*len - i];
 		i++;
 	}
 	p_s[i] = '\0';
-	free(tmp);
+	free(ret);
 	return (p_s);
 }
 
@@ -89,5 +75,6 @@ char	*ft_setspace_la(char *ret, size_t width)
 	while (i < width)
 		p_s[i++] = ' ';
 	p_s[i] = '\0';
+	free(ret);
 	return (p_s);
 }

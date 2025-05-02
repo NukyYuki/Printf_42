@@ -47,7 +47,7 @@ static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 		str[i] = '-';
 		i++;
 	}
-	while (n >= base_len)
+	while (n >= (unsigned long)base_len)
 	{
 		str[len] = base[n % base_len];
 		n /= base_len;
