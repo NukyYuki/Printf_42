@@ -54,7 +54,7 @@ t_flags	*ft_flag_check(const char *s, int *count)
 	}
 	if (fbool->minus == 1 || fbool->in_precision == 1)
 		fbool->zeros = 0;
-	if (fbool->plus == 1 || fbool->width > 0)
+	if (fbool->plus == 1)
 		fbool->space = 0;
 	*count = i; // or *count += i; if variable flag_skip is not used in printf();
 	return (fbool);
@@ -102,20 +102,39 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	flag_info = ft_flag_check(s, p_fs);
 	if (flag_info->in_precision == 1 && spec != 'p')
 	{
-		if (flag_info->precision > len && spec != 's')
+		if (flag_info->precision > len && (spec != 's' && spec != 'c'))
 		{
 			len = flag_info->precision;
 			ret = ft_setchar_ra(ret, len, '0');
 		}
 		else if (flag_info->precision < len && spec == 's')
+		{
 			len = flag_info->precision;
+			ret = ft_substr(ret, 0, len);
+		}
 	}
 	if (flag_info->hash == 1 || spec == 'p')
-		ret = ft_sethash(ret, &len, spec);
+		ret = ft_sethash(ret, &len, flag_info, spec);
 	else if (flag_info->plus == 1)
 		ret = ft_setchar_ra(ret, ++len, '+');
 	if (flag_info->space == 1 && (spec == 'd' || spec == 'i'))
 		ret = ft_setchar_ra(ret, ++len, ' ');
 /*	nova func a partir daqui  */
+	if (flag_info->width > len)
+	{
+		if (flag_info->minus == 1)
+			ret = ft_setspace_la(ret, flag_info->width);
+		else if (flag_info->zeros == 1)
+			ret = ft_setchar_ra(ret, flag_info->width, '0');
+		else
+			ret = ft_setchar_ra(ret, flag_info->width, ' ');
+	}
+	free(flag_info);
 	return (ret);
 }
+/*
+	if (fbool->minus == 1 || fbool->in_precision == 1)
+		fbool->zeros = 0;
+	if (fbool->plus == 1 || fbool->width > 0)
+		fbool->space = 0;
+*/

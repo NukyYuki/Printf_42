@@ -16,43 +16,50 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 {
 	char	*p_s;
 	size_t	i;
+	size_t	k;
 
 	p_s = malloc((len + 1) * sizeof(char));
 	if (!p_s)
 		return (NULL);
 	i = 0;
+	k = 0;
 	while (i < (len - ft_strlen(ret)))
 		p_s[i++] = set;
 	while (i < len)
-	{
-		p_s[i] = ret[len - i];
-		i++;
-	}
+		p_s[i++] = ret[k++];
 	p_s[i] = '\0';
 	free(ret);
 	return (p_s);
 }
 
-char	*ft_sethash(char *ret, size_t *len, char spec)
+char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 {
 	char	*p_s;
 	size_t	i;
+	int		k;
+	int		bow;
 
 	*len += 2;
-	p_s = malloc((*len + 1) * sizeof(char));
+	bow = 0;
+	if (fi->width > *len && fi->zeros == 1)
+		bow = fi->width;
+	p_s = malloc((*len + bow + 1) * sizeof(char));
 	if (!p_s)
 		return (NULL);
 	i = 2;
-	p_s[0] = 0;
+	k = 0;
+	p_s[0] = '0';
 	if (spec == 'X')
 		p_s[1] = 'X';
 	else
 		p_s[1] = 'x';
-	while (i < *len)
+	if (bow > 0)
 	{
-		p_s[i] = ret[*len - i];
-		i++;
+		ret = ft_setchar_ra(ret, bow - *len, 0);
+		*len = fi->width;
 	}
+	while (i < *len)
+		p_s[i++] = ret[k++];
 	p_s[i] = '\0';
 	free(ret);
 	return (p_s);
@@ -67,7 +74,7 @@ char	*ft_setspace_la(char *ret, size_t width)
 	if (!p_s)
 		return (NULL);
 	i = 0;
-	while (i < (width - ft_strlen(ret)))
+	while (i < ft_strlen(ret))
 	{
 		p_s[i] = ret[i];
 		i++;

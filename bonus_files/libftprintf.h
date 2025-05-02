@@ -47,6 +47,7 @@ char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long n, char *base);
 char	*ft_setchar_ra(char *ret, size_t len, char set);
 char	*ft_setspace_la(char *ret, size_t width);
-char	*ft_sethash(char *ret, size_t *len, char spec);
+char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 
 #endif

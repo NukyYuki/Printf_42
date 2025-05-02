@@ -20,8 +20,8 @@ int	main()
 {
 	int	i = 42;
 	//|||0xffffffd6|||
-	printf("|||% -4d|||\n", i);
-//	printf("|||%020p|||\n", &i);
+	printf("|||%#-011.8x|||\n", i);
+	printf("|||%10c|||\n", '5');
 	//printf("|||%0+10d|||\n", i);
 //	printf("|||%#-9.8x||\n", i);
 //	printf("|||%08.7d|||\n", i);

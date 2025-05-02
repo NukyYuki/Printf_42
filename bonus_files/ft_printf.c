@@ -33,11 +33,14 @@ int	ft_printf(const char *str, ...)
 		}
 		if (str[i] == '%')
 		{
-			char spec = ft_strchr(str + i + 1);
+			char spec = ft_strchr(str + ++i);
 			ret = ft_see_format(&spec, var_args);
 			int flag_skip = 0;
-			ft_flags(str + i, ret, &flag_skip, spec);
+			ret = ft_flags(str + i, ret, &flag_skip, spec);
 			i += flag_skip;
+			count += ft_putstr(ret);
+			i++;
+			free(ret);
 		}
 	}
 	va_end (var_args);

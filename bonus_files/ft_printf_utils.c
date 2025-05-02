@@ -88,15 +88,13 @@ char	*ft_strdup(char *src)
 	return (dup);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
 	sub = (char *)malloc(sizeof(char) * (len + 1));
@@ -109,5 +107,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	sub[i] = '\0';
+	free(s);
 	return (sub);
 }

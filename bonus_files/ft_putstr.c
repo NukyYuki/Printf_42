@@ -12,6 +12,15 @@
 
 #include "libftprintf.h"
 
+int	ft_putchar(char c)
+{
+	int	count;
+
+	count = 1;
+	write(1, &c, 1);
+	return (count);
+}
+
 int	ft_putstr(char *s)
 {
 	int	count;
