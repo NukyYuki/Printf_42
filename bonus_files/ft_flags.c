@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/04/30 01:09:11 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/02 11:16:45 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -63,7 +63,7 @@ t_flags	*flag_check(const char *s, int count)
 	{
 		if (s[i] == '#')
 			fbool->hash = 1;
-		else if	(s[i] == '.')
+		else if (s[i] == '.')
 			fbool->in_precision = 1;
 		else if (s[i] >= '1' && s[i] <= '9')
 		{
@@ -86,7 +86,6 @@ t_flags	*flag_check(const char *s, int count)
 			else
 				fbool->width = fbool->width * 10 + (s[i] - 48);
 			fbool->in_value = 1;
-
 		}
 		else if (s[i] == '+')
 			fbool->plus = 1;

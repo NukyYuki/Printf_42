@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 00:56:10 by manmaria          #+#    #+#             */
-/*   Updated: 2025/04/30 17:27:18 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/02 11:17:20 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_flags	*ft_flag_check(const char *s, int *count)
 	{
 		if (s[i] == '#')
 			fbool->hash = 1;
-		else if	(s[i] == '.')
+		else if (s[i] == '.')
 			fbool->in_precision = 1;
 		else if (s[i] >= '1' && s[i] <= '9')
 		{
@@ -121,12 +121,12 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		ft_set_hash(ret, tmp, len + 2, spec);
 	else if (flag_info->plus == 1)
 	{
-		ft_set_char(ret, tmp, len + 1, '+');
+		ret = ft_set_char(ret, tmp, len + 1, '+');
 		tmp = ret;
 	}
 /*	nova func a partir daqui  */
 
-	return (NULL);
+	return (ret);
 }
 
 int	ft_printf(const char *str, ...)
