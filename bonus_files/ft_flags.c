@@ -9,57 +9,17 @@
 /*   Updated: 2025/05/02 11:16:45 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-*  WARNING: 
-*  THESE FUNCTIONS HERE ARE OUTDATED!
-*  NEW VERSIONS ARE IN bonus_files/ft_flags.c
-*  WILL UPDATE THE ONES HERE WHEN THEIR NEWER COUNTERPARTS
-*  ARE FULLY TESTED.
-*  NEED TO UPDATE THE DECLARATIONS IN libftprintf.h 
-*/
 
 #include "libftprintf.h"
 
-int	check_spec(char const c, char *spec_lst)
-{
-	int	i;
-
-	i = 0;
-	while (*spec_lst)
-	{
-		if (c == *spec_lst)
-			return (1);
-		spec_lst++;
-	}
-	return (0);
-}
-
-int	ft_strchr(const char *s, char *spec_lst, char *p_spec)
-{
-	int	i;
-
-	i = 0;
-	while (check_spec(s[i], spec_lst) == 0)
-	{
-		if (s[i] == '\0')
-			break ;
-		i++;
-	}
-	if (check_spec(s[i], spec_lst) == 1)
-		return (i);
-	i = 0;
-	p_spec = (char *)s + i;
-	return (0);
-}
-
-t_flags	*flag_check(const char *s, int count)
+t_flags	*ft_flag_check(const char *s, int *count)
 {
 	t_flags	*fbool;
 	int		i;
 
 	i = 0;
-	fbool = ft_calloc(1, sizeof(t_flags)); //calloc to set all vars to 0
-	while (i < count)
+	fbool = ft_calloc(1, sizeof(t_flags));
+	while (check_spec(s[i], "cspdiuxX%") == 0)
 	{
 		if (s[i] == '#')
 			fbool->hash = 1;
@@ -79,13 +39,14 @@ t_flags	*flag_check(const char *s, int count)
 			fbool->minus = 1;
 		else if (s[i] == '0')
 		{
-			if (!fbool->in_precision && !fbool->in_value && fbool->zeros == 0)
+			if (!fbool->in_precision && !fbool->in_value && !fbool->zeros)
 				fbool->zeros = 1;
 			else if (fbool->in_precision)
 				fbool->precision = fbool->precision * 10 + (s[i] - 48);
 			else
 				fbool->width = fbool->width * 10 + (s[i] - 48);
 			fbool->in_value = 1;
+
 		}
 		else if (s[i] == '+')
 			fbool->plus = 1;
@@ -93,28 +54,75 @@ t_flags	*flag_check(const char *s, int count)
 	}
 	if (fbool->minus == 1 || fbool->in_precision == 1)
 		fbool->zeros = 0;
-	if (fbool->plus == 1)
+	if (fbool->plus == 1 || fbool->width > 0)
 		fbool->space = 0;
+	*count = i; // or *count += i; if variable flag_skip is not used in printf();
 	return (fbool);
 }
 
-int	ft_flags(const char *s, va_list	varg)
+int	check_spec(char const c, char *spec_lst)
 {
-	// %[flags][width][.precision]specifier
-	t_flags	*fbool;
-	char	*spec_lst;
-	char	*sub; //str will get malloc's to add converted result to
-	char	spec; //the specifier we are dealing with
-	int		count;// the number of flags we need to convert until spec
-	int		i;
-	va_list	vcopy;
-	
-	spec_lst = "cspdiuxX%";
-	va_copy(varg, vcopy);
-	count = ft_strchr(s, spec_lst, &spec);
-	fbool = flag_check(s, count);
-	i = 0;
+	int	i;
 
-	va_end(vcopy);
-	return (count);
+	i = 0;
+	while (*spec_lst)
+	{
+		if (c == *spec_lst)
+			return (1);
+		spec_lst++;
+	}
+	return (0);
+}
+
+char	ft_strchr(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (check_spec(s[i], "cspdiuxX%") == 0)
+	{
+		if (s[i] == '\0')
+			break ;
+		i++;
+	}
+	if (check_spec(s[i], "cspdiuxX%") == 1)
+	{
+		return ((char)s[i]);
+	}
+	return (0); //nsei se devia retornar '\0' aqui ou outra coisa
+}
+
+//											  s[*p_i] = '%'
+char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
+{
+	t_flags	*flag_info;
+	char	*tmp;
+	int		len;
+
+	len = ft_strlen(ret);
+	tmp = ret;
+	flag_info = ft_flag_check(s, p_fs);
+	if (spec == 'p')
+		flag_info->hash = 1;
+	if (flag_info->in_precision == 1)
+	{
+		if (flag_info->precision > len && spec != 's')
+		{
+			len = flag_info->precision;
+			ret = ft_setchar_ra(ret, tmp, len, '0');
+			tmp = ret;
+		}
+		else if (flag_info->precision < len && spec == 's')
+			len = flag_info->precision;
+	}
+	if (flag_info->hash == 1)
+		ft_sethash(ret, tmp, len + 2, spec);
+	else if (flag_info->plus == 1)
+	{
+		ret = ft_setchar_ra(ret, tmp, len + 1, '+');
+		tmp = ret;
+	}
+/*	nova func a partir daqui  */
+
+	return (ret);
 }

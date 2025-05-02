@@ -31,24 +31,22 @@ typedef struct s_flags
 	int	plus;
 }			t_flags;
 
-void	ft_bzero(void *s, size_t n);
 int		ft_printf(const char *str, ...);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
-int		ft_putnbr_base_hexa(long nb, char *base);
-int		ft_putnbr_decimal(long nb);
 size_t	ft_strlen(const char *s);
 char	*ft_see_format(const char *s, va_list var_args);
-void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(char *src);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strrchr(const char *s, int c);
+char	ft_strchr(const char *s);
+int		check_spec(char const c, char *spec_lst);
 t_flags	*ft_flag_check(const char *s, int *count);
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned long n, char *base);
-char	*ft_set_char(char *ret, char *tmp, size_t len, char set);
-char	*ft_setspace(char *ret, size_t width);
-char	*ft_set_hash(char *ret, char *tmp, size_t len, char spec);
+char	*ft_setchar_ra(char *ret, char *tmp, size_t len, char set);
+char	*ft_setspace_la(char *ret, size_t width);
+char	*ft_sethash(char *ret, char *tmp, size_t len, char spec);
 
 #endif
