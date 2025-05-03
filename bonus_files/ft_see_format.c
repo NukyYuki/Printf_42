@@ -40,7 +40,7 @@ char	*ft_see_format(const char *s, va_list varg)
 	else if (*s == 's')
 		return (return_val = ft_strdup(va_arg(varg, char *)));
 	else if (*s == 'i' || *s == 'd')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
+		return (return_val = ft_itoa(va_arg(varg, int)));
 	else if (*s == 'u')
 		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == 'x')

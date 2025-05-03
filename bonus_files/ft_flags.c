@@ -62,9 +62,9 @@ t_flags	*ft_flag_check(const char *s, int *count)
 
 int	check_spec(char const c, char *spec_lst)
 {
-	int	i;
+//	int	i;
 
-	i = 0;
+//	i = 0;
 	while (*spec_lst)
 	{
 		if (c == *spec_lst)

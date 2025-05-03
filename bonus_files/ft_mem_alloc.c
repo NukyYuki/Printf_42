@@ -55,7 +55,7 @@ char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 		p_s[1] = 'x';
 	if (bow > 0)
 	{
-		ret = ft_setchar_ra(ret, bow - *len, 0);
+		ret = ft_setchar_ra(ret, bow - 2, '0');
 		*len = fi->width;
 	}
 	while (i < *len)

@@ -8,8 +8,8 @@ int main(void)
 	//char	c = 'A';
 	int		pf = 0;
 
-	pf = ft_printf("|%-05.000003d|", i);
-	printf("\n|%05.000003d|", i);
+	pf = ft_printf("|%#015x|", i);
+	printf("\n|%#015x|", i);
 	//printf("\n%d\n", pf);
 	return 0;
 }
