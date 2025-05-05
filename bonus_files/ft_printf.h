@@ -34,11 +34,11 @@ typedef struct s_flags
 int		ft_printf(const char *str, ...);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
+int		ft_putchar(int c);
+int		ft_putstr(const char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_see_format(const char *s, va_list var_args);
-char	*ft_strdup(char *src);
+char	*ft_strdup(const char *src);
 char	ft_strchr(const char *s);
 int		check_spec(char const c, char *spec_lst);
 t_flags	*ft_flag_check(const char *s, int *count);

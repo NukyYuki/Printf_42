@@ -66,13 +66,15 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (arr);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*dup;
 	int		i;
 
 	dup = 0;
 	i = 0;
+	if (!src)
+		return (ft_strdup("(null)"));
 	while (src[i])
 		i++;
 	dup = (char *)malloc(sizeof(char) * (i + 1));
@@ -84,7 +86,7 @@ char	*ft_strdup(char *src)
 		dup[i] = src[i];
 		i++;
 	}
-	dup[i] = 0;
+	dup[i] = '\0';
 	return (dup);
 }
 

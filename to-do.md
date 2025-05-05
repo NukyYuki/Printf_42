@@ -23,8 +23,14 @@
 
 ### 2/05
 
-- [ ] '#' '0' and width combination isn't working, not printing number after 0x
+- [x] '#' '0' and width combination ~~isn't~~ *is now* working, not printing number after 0x
    - wrong allocation size
    - need to make it work for hash with and without '0's simmultansly;
 - [ ] norm correct everything, mostly functions bigger than 25 lines;
-no need - [ ] use unsigned int for all the "int values", only use long for the pointer adresses.
+~- [ ] use unsigned int for all the "int values", only use long for the pointer adresses.~~
+
+### 5/05
+
+- [ ] paco reports conditional jump when specifier refers to a number
+- [ ] NULL values print "(null)", but some flags dont work like
+   - `char *s = NULL; ft_printf("%.5s", s)` should print nothing, ours is printing `$>(null`

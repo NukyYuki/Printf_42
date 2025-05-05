@@ -15,8 +15,10 @@
 static size_t	lengths(unsigned long n, int base_len)
 {
 	size_t		len;
+	unsigned long nu;
 
 	len = 0;
+	nu = n; //TESTING solution for conditional jump
 	if (n == 0)
 		len++;
 	/*if (n < 0)
