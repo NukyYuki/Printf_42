@@ -6,11 +6,11 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:07:41 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/24 14:05:27 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:10:32 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *str, ...)
 {

@@ -6,11 +6,11 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 20:43:24 by manmaria          #+#    #+#             */
-/*   Updated: 2025/04/24 20:49:09 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:10:32 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {

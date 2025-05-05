@@ -6,11 +6,11 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:48:43 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/24 13:41:51 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:10:32 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_decimal(long nb)
 {

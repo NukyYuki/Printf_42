@@ -6,11 +6,11 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:49:48 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 19:46:54 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:10:32 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_base_hexa(unsigned int nb, char *base)
 {

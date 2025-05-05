@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_init(char **return_val, char **base, int *c, int spec)
+void	ft_init(char **return_val, char **base, char *c, int spec)
 {
 	*c = 0;
 	*return_val = NULL;
@@ -26,7 +26,7 @@ void	ft_init(char **return_val, char **base, int *c, int spec)
 
 char	*ft_see_format(const char *s, va_list varg)
 {
-	int		c;
+	char	c;
 	char	*return_val;
 	char	*base;
 
@@ -34,7 +34,9 @@ char	*ft_see_format(const char *s, va_list varg)
 	if (*s == 'c')
 	{
 		c = va_arg(varg, int);
-		return (return_val = ft_strdup((char *)&c));
+		if (c < 0)
+			return (ft_strdup("0"));
+		return (return_val = ft_strdup(return_val));
 
 	}
 	else if (*s == 's')
