@@ -9,7 +9,7 @@ int main(void)
 	int		pf = 0;
 
 	pf = ft_printf("|%#015x|", i);
-	printf("\n|%#015x|", i);
+	printf("\n|%#05x|", i);
 	//printf("\n%d\n", pf);
 	return 0;
 }

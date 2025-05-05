@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 t_flags	*ft_flag_check(const char *s, int *count)
 {
@@ -62,9 +62,6 @@ t_flags	*ft_flag_check(const char *s, int *count)
 
 int	check_spec(char const c, char *spec_lst)
 {
-//	int	i;
-
-//	i = 0;
 	while (*spec_lst)
 	{
 		if (c == *spec_lst)
@@ -89,10 +86,9 @@ char	ft_strchr(const char *s)
 	{
 		return ((char)s[i]);
 	}
-	return (0); //nsei se devia retornar '\0' aqui ou outra coisa
+	return (0);
 }
 
-//											  s[*p_i] = '%'
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 {
 	t_flags	*flag_info;
@@ -132,9 +128,3 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	free(flag_info);
 	return (ret);
 }
-/*
-	if (fbool->minus == 1 || fbool->in_precision == 1)
-		fbool->zeros = 0;
-	if (fbool->plus == 1 || fbool->width > 0)
-		fbool->space = 0;
-*/

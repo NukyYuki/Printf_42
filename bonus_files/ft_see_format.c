@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-#include <string.h>
+#include "ft_printf.h"
 
 void	ft_init(char **return_val, char **base, char *c, int spec)
 {
