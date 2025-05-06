@@ -16,7 +16,8 @@ void	ft_flag_check_helper(const char *s, t_flags **fb)
 {
 	if (*s >= '0' && *s <= '9')
 	{
-		if (*s == '0' && !(*fb)->in_precision && !(*fb)->in_value && !(*fb)->zeros)
+		if (*s == '0' && !(*fb)->in_precision
+			&& !(*fb)->in_value && !(*fb)->zeros)
 			(*fb)->zeros = 1;
 		else if ((*s >= '1' && *s <= '9') || *s == '0')
 		{
@@ -33,7 +34,6 @@ void	ft_flag_check_helper(const char *s, t_flags **fb)
 	if ((*fb)->plus == 1)
 		(*fb)->space = 0;
 }
-
 /*		THE VERIFICATIONS ABOVE BEFORE TRIMMING FT_FLAG:
 		else if (s[i] >= '1' && s[i] <= '9')
 		{
@@ -53,6 +53,7 @@ void	ft_flag_check_helper(const char *s, t_flags **fb)
 			fbool->in_value = 1;
 		}
 */
+
 char	*ft_width_bigger_len(t_flags *flag_info, char *ret)
 {
 	if (flag_info->minus == 1)

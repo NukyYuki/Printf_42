@@ -79,7 +79,7 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	flag_info = ft_flag_check(s, p_fs);
 	if (flag_info->in_precision == 1 && spec != 'p')
 	{
-		ft_has_precision(flag_info, ret, &len, spec);
+		ret = ft_has_precision(flag_info, ret, &len, spec);
 		/*if (flag_info->precision > len && (spec != 's' && spec != 'c'))
 		{
 			len = flag_info->precision;
@@ -99,8 +99,8 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		ret = ft_setchar_ra(ret, ++len, ' ');
 	if (flag_info->width > len)
 	{
-		ft_width_bigger_len(flag_info, ret);
-/*		if (flag_info->minus == 1)
+		ret = ft_width_bigger_len(flag_info, ret);
+	/*	if (flag_info->minus == 1)
 			ret = ft_setspace_la(ret, flag_info->width);
 		else if (flag_info->zeros == 1)
 			ret = ft_setchar_ra(ret, flag_info->width, '0');

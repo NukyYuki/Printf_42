@@ -26,18 +26,16 @@ void	ft_init(char **return_val, char **base, char *c, int spec)
 
 char	*ft_see_format(const char *s, va_list varg)
 {
-	char	c;
+	int		c;
 	char	*return_val;
 	char	*base;
 
-	ft_init(&return_val, &base, &c, *s);
+	ft_init(&return_val, &base, (char *)&c, *s);
 	if (*s == 'c')
 	{
+		//WARNING: check cases like char -/+ 256
 		c = va_arg(varg, int);
-		if (c < 0)
-			return (ft_strdup("0"));
-		return (return_val = ft_strdup(return_val));
-
+		return (return_val = ft_dupchar(c));
 	}
 	else if (*s == 's')
 		return (return_val = ft_strdup(va_arg(varg, char *)));
@@ -52,6 +50,6 @@ char	*ft_see_format(const char *s, va_list varg)
 	else if (*s == 'p')
 		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == '%')
-		return (return_val = ft_strdup("%"));
+		return (return_val = ft_dupchar('%'));
 	return (NULL);
 }

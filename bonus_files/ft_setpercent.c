@@ -26,5 +26,6 @@ int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
 	*p += flag_skip;
 	count += ft_putstr(ret);
 	*p += 1;
+	free(ret);
 	return (count);
 }

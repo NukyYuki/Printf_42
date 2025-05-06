@@ -15,17 +15,10 @@
 static size_t	lengths(unsigned long n, int base_len)
 {
 	size_t		len;
-	unsigned long nu;
 
 	len = 0;
-	nu = n; //TESTING solution for conditional jump
 	if (n == 0)
 		len++;
-	/*if (n < 0)
-	{
-		n = -n;
-		len++;
-	}*/
 	while (n > 0)
 	{
 		n = n / base_len;
@@ -33,6 +26,11 @@ static size_t	lengths(unsigned long n, int base_len)
 	}
 	return (len);
 }
+	/*if (n < 0)
+	{
+		n = -n;
+		len++;
+	}*/
 
 static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 {
@@ -43,12 +41,6 @@ static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 	i = 0;
 	str[len] = '\0';
 	len--;
-	/*if (n < 0)
-	{
-		n = -n;
-		str[i] = '-';
-		i++;
-	}*/
 	while (n >= (unsigned long)base_len)
 	{
 		str[len] = base[n % base_len];
@@ -58,6 +50,12 @@ static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 	str[i] = base[n];
 	return (str);
 }
+/*if (n < 0)
+	{
+		n = -n;
+		str[i] = '-';
+		i++;
+	}*/
 
 char	*ft_itoa_base(unsigned long n, char *base)
 {

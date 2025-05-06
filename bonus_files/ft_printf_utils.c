@@ -66,6 +66,18 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (arr);
 }
 
+char	*ft_dupchar(int	n)
+{
+	char	*dup;
+
+	dup = malloc(sizeof(char) * 2);
+	if (!dup)
+		return (NULL);
+	dup[0] = n;
+	dup[1] = 0;
+	return (dup);
+}
+
 char	*ft_strdup(const char *src)
 {
 	char	*dup;

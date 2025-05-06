@@ -41,6 +41,7 @@ int		ft_putstr(const char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_see_format(const char *s, va_list var_args);
 char	*ft_strdup(const char *src);
+char	*ft_dupchar(int	n);
 char	ft_strchr(const char *s);
 int		check_spec(char const c, char *spec_lst);
 t_flags	*ft_flag_check(const char *s, int *count);
