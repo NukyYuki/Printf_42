@@ -32,7 +32,7 @@ int	ft_printf(const char *str, ...)
 		}
 		if (str[i] == '%')
 		{
-			count = set_percent(var_args, str + i, &i, count);
+			count = ft_setpercent(var_args, str + i, &i, count);
 			/*char spec = ft_strchr(str + ++i);
 			ret = ft_see_format(&spec, var_args);
 			int flag_skip = 0;
