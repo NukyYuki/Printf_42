@@ -16,45 +16,27 @@ t_flags	*ft_flag_check(const char *s, int *count)
 {
 	t_flags	*fbool;
 	int		i;
-
-	i = 0;
+	
 	fbool = ft_calloc(1, sizeof(t_flags));
-	while (check_spec(s[i], "cspdiuxX%") == 0)
+	i = -1;
+	while (check_spec(s[++i], "cspdiuxX%") == 0)
 	{
 		if (s[i] == '#')
 			fbool->hash = 1;
 		else if (s[i] == '.')
 			fbool->in_precision = 1;
 		else if (s[i] >= '1' && s[i] <= '9')
-		{
-			if (fbool->in_precision == 1)
-				fbool->precision = fbool->precision * 10 + (s[i] - 48);
-			else
-				fbool->width = fbool->width * 10 + (s[i] - 48);
-			fbool->in_value = 1;
-		}
+			ft_flag_check_helper(s, &fbool);
 		else if (s[i] == ' ')
 			fbool->space = 1;
 		else if (s[i] == '-')
 			fbool->minus = 1;
 		else if (s[i] == '0')
-		{
-			if (!fbool->in_precision && !fbool->in_value && !fbool->zeros)
-				fbool->zeros = 1;
-			else if (fbool->in_precision)
-				fbool->precision = fbool->precision * 10 + (s[i] - 48);
-			else
-				fbool->width = fbool->width * 10 + (s[i] - 48);
-			fbool->in_value = 1;
-		}
+			ft_flag_check_helper(s, &fbool);
 		else if (s[i] == '+')
 			fbool->plus = 1;
-		i++;
 	}
-	if (fbool->minus == 1 || fbool->in_precision == 1)
-		fbool->zeros = 0;
-	if (fbool->plus == 1)
-		fbool->space = 0;
+	ft_flag_check_helper(s, &fbool);
 	*count = i;
 	return (fbool);
 }
