@@ -47,7 +47,7 @@ int		check_spec(char const c, char *spec_lst);
 t_flags	*ft_flag_check(const char *s, int *count);
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec);
 char	*ft_itoa(int n);
-char	*ft_itoa_base(unsigned long n, char *base);
+char	*ft_itoa_base(unsigned int n, char *base);
 char	*ft_setchar_ra(char *ret, size_t len, char set);
 char	*ft_setspace_la(char *ret, size_t width);
 char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec);
@@ -56,5 +56,6 @@ int		ft_setpercent(va_list var_args, const char *str, int *p, int count);
 char	*ft_width_bigger_len(t_flags *flag_info, char *ret);
 char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len,
 			char spec);
+char	*ft_itoa_pt(unsigned long n, char *base);
 
 #endif

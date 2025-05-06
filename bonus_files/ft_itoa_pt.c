@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static size_t	lengths(unsigned int n, int base_len)
+static size_t	lengths(unsigned long n, int base_len)
 {
 	size_t		len;
 
@@ -32,7 +32,7 @@ static size_t	lengths(unsigned int n, int base_len)
 		len++;
 	}*/
 
-static char	*putnbr_str(unsigned int n, char *str, char *base, int base_len)
+static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 {
 	size_t	i;
 	size_t	len;
@@ -41,7 +41,7 @@ static char	*putnbr_str(unsigned int n, char *str, char *base, int base_len)
 	i = 0;
 	str[len] = '\0';
 	len--;
-	while (n >= (unsigned int)base_len)
+	while (n >= (unsigned long)base_len)
 	{
 		str[len] = base[n % base_len];
 		n /= base_len;
@@ -57,7 +57,7 @@ static char	*putnbr_str(unsigned int n, char *str, char *base, int base_len)
 		i++;
 	}*/
 
-char	*ft_itoa_base(unsigned int n, char *base)
+char	*ft_itoa_pt(unsigned long n, char *base)
 {
 	char	*itoa;
 	int		base_len;

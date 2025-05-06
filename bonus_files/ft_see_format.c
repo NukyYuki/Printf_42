@@ -38,11 +38,11 @@ char	*ft_see_format(const char *s, va_list varg)
 	else if (*s == 'u')
 		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
 	else if (*s == 'x')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned int), base));
 	else if (*s == 'X')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned int), base));
 	else if (*s == 'p')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
+		return (return_val = ft_itoa_pt(va_arg(varg, unsigned long), base));
 	else if (*s == '%')
 		return (return_val = ft_dupchar('%'));
 	return (NULL);

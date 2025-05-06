@@ -14,11 +14,9 @@
 
 int	ft_putchar(char c)
 {
-	int	count;
-
-	count = 1;
-	write(1, &c, 1);
-	return (count);
+	if (write(1, &c, 1) == -1)
+		return (-1);
+	return (1);
 }
 
 void	ft_bzero(void *s, size_t n)

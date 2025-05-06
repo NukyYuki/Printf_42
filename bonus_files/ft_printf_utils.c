@@ -28,6 +28,8 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t	len;
 
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
 	while (1)
 	{
@@ -73,7 +75,7 @@ char	*ft_dupchar(int n)
 	dup = malloc(sizeof(char) * 2);
 	if (!dup)
 		return (NULL);
-	dup[0] = n;
+	dup[0] = (char)n;
 	dup[1] = 0;
 	return (dup);
 }

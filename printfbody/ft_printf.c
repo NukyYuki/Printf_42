@@ -25,18 +25,19 @@ int	ft_printf(const char *str, ...)
 	ret = 0;
 	while (str[i] != '\0')
 	{
-		while (str[i] != '%' && str[i] != '\0')
-		{
-			count += ft_putchar(str[i]);
-			i++;
-		}
 		if (str[i] == '%')
 		{
-			ret = ft_see_format(str + i, var_args);// using ret here to check for errors on check phase
+			ret = ft_see_format(&str[i], var_args);
 			if (ret == -1)
-				return (0);
-			count += ret;// if see_format worked, then count gets the addition of the return value which is the "number of prints"
+				return (-1);
+			count += ret;
 			i += 2;
+		}
+		else
+		{
+			if (ft_putchar(str[i++]) == -1)
+				return (-1);
+			count++;
 		}
 	}
 	va_end (var_args);

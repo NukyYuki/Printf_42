@@ -14,34 +14,37 @@
 
 int	ft_see_format(const char *s, va_list var_args)
 {
-	int	count;
-	int	i;
+	int		count;
+	char	spec;
 
 	count = 0;
-	i = 0;
-	if (s[i + 1]  == 'c')
+	spec = s[1];
+	if (spec == 'c')
 		count += ft_putchar(va_arg(var_args, int));
-	else if (s[i + 1] == 's')
+	else if (spec == 's')
 		count += ft_putstr(va_arg(var_args, char *));
-	else if (s[i + 1] == 'i' || s[i + 1] == 'd')
+	else if (spec == 'i' || spec == 'd')
 		count += ft_putnbr_decimal(va_arg(var_args, int));
-	else if (s[i + 1] == 'u')
+	else if (spec == 'u')
 		count += ft_putnbr_decimal(va_arg(var_args, unsigned int));
-	else if (s[i + 1] == 'x')
+	else if (spec == 'x')
 		count += ft_putnbr_base_hexa(va_arg(var_args, unsigned int),
 				"0123456789abcdef");
-	else if (s[i + 1] == 'X')
+	else if (spec == 'X')
 		count += ft_putnbr_base_hexa(va_arg(var_args, unsigned int),
 				"0123456789ABCDEF");
-	else if (s[i + 1] == 'p')
+	else if (spec == 'p')
 	{
 		count += ft_putstr("0x");
 		count += ft_putnbr_base_pointer(va_arg(var_args, long),
 				"0123456789abcdef");
 	}
-	else if (s[i + 1] == '%')
+	else if (spec == '%')
 		count += ft_putchar('%');
 	else
-		return (-1);
+	{
+		count += ft_putchar('%');
+		count += ft_putchar(s[1]);
+	}
 	return (count);
 }

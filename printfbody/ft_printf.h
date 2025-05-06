@@ -17,17 +17,6 @@
 # include <unistd.h>
 # include <limits.h>
 
-typedef struct s_type
-{
-	int	width;
-	int	minus;
-	int	zeros;
-	int	precision;
-	int	hash;
-	int	space;
-	int	plus;
-}			t_flags;
-
 void	ft_bzero(void *s, size_t n);
 int		ft_printf(const char *str, ...);
 int		ft_putchar(char c);

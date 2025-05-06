@@ -32,9 +32,9 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 	return (p_s);
 }
 
-void	hash_init(size_t **len, size_t *i, int *k, int *bow)
+void	hash_init(size_t *len, size_t *i, int *k, int *bow)
 {
-	**len += 2;
+	*len += 2;
 	*bow = 0;
 	*i = 2;
 	*k = 0;
@@ -47,7 +47,7 @@ char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 	int		k;
 	int		bow;
 
-	hash_init(&len, &i, &k, &bow);
+	hash_init(len, &i, &k, &bow);
 	if (fi->width > *len && fi->zeros == 1)
 		bow = fi->width;
 	p_s = calloc((*len + bow + 1), sizeof(char));

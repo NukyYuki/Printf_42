@@ -16,8 +16,8 @@ int main(void)
 
 	ft_printf("ft -> |%10.c|\n", 'a');
 	printf("OG -> |%10.c|\n", 'a');
-	ft_printf("ft -> |%-10%|\n");
-	printf("OG -> |%-10%|\n");
+	ft_printf("ft -> |%k%j|\n");
+	printf("OG -> |%k%j|\n");
 	ft_printf("ft -> |%#015x|\n", 42);
 	printf("OG -> |%#015x|\n", 42);
 	//printf("-- printed char count --\nft -> %d\nOG -> %d\n", ftf, pf);
