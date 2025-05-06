@@ -34,3 +34,4 @@
 - [ ] paco reports conditional jump when specifier refers to a number
 - [ ] NULL values print "(null)", but some flags dont work like
    - `char *s = NULL; ft_printf("%.5s", s)` should print nothing, ours is printing `$>(null`
+- [ ] change struct boolean types to char to minimise memory usage
