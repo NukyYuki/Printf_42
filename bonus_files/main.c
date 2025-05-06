@@ -3,26 +3,19 @@
 
 int main(void)
 {
-	//char	*s = "Hello";
-//	int		i = 42;
-	//char	c = 'A';
-	char		pf = 'a';
-	//int		ftf = 0;
-	//char	*s = NULL;
 
-//	ftf = ft_printf("ft -> |%c|\n", '0' - 256) - 9;
-//	ftf = ft_printf("ft -> |%c|\n", '0' + 256) - 9;
-	//pf = printf("og -> |%c|\n", 'a' - 256) - 9;
-	//pf = printf("og -> |%c|\n", '0' + 256) - 9;
-//	pf = printf("og -> |%c|\n", 0) - 9;
-	ft_printf("ft -> |%10c|\n", pf);
-	ft_printf("\nOG -> |%10%|");
-	printf("\nOG -> |%10%|");
-	printf("\nOG -> |%10c|", pf);
-	//ft_printf("pf -> |%.4s|\n", s);
-	//printf("OG -> |%.4s|\n", s);
-	//pf = printf("OG -> |%i|\n", i) - 9;
-	//pf = ft_printf("|%#015x|", i);
+//	ft_printf("ft -> |%c|\n", 'a' - 256);
+	ft_printf("ft -> |%c|\n", '\n' + 256);
+//	printf("og -> |%c|\n", 'a' - 256);
+	printf("og -> |%c|\n", '\n' + 256);
+//	ft_printf("ft -> |%s| %% %#06x", "ola", 42);
+
+	ft_printf("ft -> |%10.c|\n", 'a');
+	printf("OG -> |%10.c|\n", 'a');
+	ft_printf("ft -> |%-10%|\n");
+	printf("OG -> |%-10%|\n");
+	ft_printf("ft -> |%#015x|\n", 42);
+	printf("OG -> |%#015x|\n", 42);
 	//printf("-- printed char count --\nft -> %d\nOG -> %d\n", ftf, pf);
 	return 0;
 }
