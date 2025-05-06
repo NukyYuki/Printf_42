@@ -58,3 +58,32 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	free(s);
 	return (sub);
 }
+
+int	check_spec(char const c, char *spec_lst)
+{
+	while (*spec_lst)
+	{
+		if (c == *spec_lst)
+			return (1);
+		spec_lst++;
+	}
+	return (0);
+}
+
+char	ft_strchr(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (check_spec(s[i], "cspdiuxX%") == 0)
+	{
+		if (s[i] == '\0')
+			break ;
+		i++;
+	}
+	if (check_spec(s[i], "cspdiuxX%") == 1)
+	{
+		return ((char)s[i]);
+	}
+	return (0);
+}

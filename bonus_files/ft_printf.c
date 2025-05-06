@@ -12,6 +12,34 @@
 
 #include "ft_printf.h"
 
+int	ft_putchar(int c)
+{
+	return (write(1, &c, 1));
+}
+
+int	ft_putstr(const char *s)
+{
+	return (write(1, s, ft_strlen(s)));
+}
+
+int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
+{
+	char	*ret;
+	char	spec;
+	int		flag_skip;
+
+	flag_skip = 0;
+	ret = 0;
+	spec = ft_strchr(str + ++(*p));
+	ret = ft_see_format(&spec, var_args);
+	ret = ft_flags(str + *p, ret, &flag_skip, spec);
+	*p += flag_skip;
+	count += ft_putstr(ret);
+	*p += 1;
+	free(ret);
+	return (count);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	va_list	var_args;
