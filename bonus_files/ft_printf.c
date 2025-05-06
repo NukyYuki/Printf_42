@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 00:56:10 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/06 10:00:24 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:38:32 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ int	ft_printf(const char *str, ...)
 	va_list	var_args;
 	int		count;
 	int		i;
-	char	*ret;
 
 	va_start(var_args, str);
 	i = 0;
 	count = 0;
-	ret = 0;
 	while (str[i] != '\0')
 	{
 		while (str[i] != '%' && str[i] != '\0')
@@ -31,9 +29,13 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		if (str[i] == '%')
-		{
-			count = ft_setpercent(var_args, str + i, &i, count);
-			/*char spec = ft_strchr(str + ++i);
+			count = ft_setpercent(var_args, str, &i, count);
+	}
+	va_end (var_args);
+	return (count);
+}
+
+/*			char spec = ft_strchr(str + ++i);
 			ret = ft_see_format(&spec, var_args);
 			int flag_skip = 0;
 			ret = ft_flags(str + i, ret, &flag_skip, spec);
@@ -41,8 +43,4 @@ int	ft_printf(const char *str, ...)
 			count += ft_putstr(ret);
 			i++;
 			free(ret);*/
-		}
-	}
-	va_end (var_args);
-	return (count);
-}
+	

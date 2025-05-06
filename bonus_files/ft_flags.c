@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/06 10:57:30 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:53:21 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ t_flags	*ft_flag_check(const char *s, int *count)
 		else if (s[i] == '.')
 			fbool->in_precision = 1;
 		else if (s[i] >= '1' && s[i] <= '9')
-			ft_flag_check_helper(s, &fbool);
+			ft_flag_check_helper(s + i, &fbool);
 		else if (s[i] == ' ')
 			fbool->space = 1;
 		else if (s[i] == '-')
 			fbool->minus = 1;
 		else if (s[i] == '0')
-			ft_flag_check_helper(s, &fbool);
+			ft_flag_check_helper(s + i, &fbool);
 		else if (s[i] == '+')
 			fbool->plus = 1;
 	}

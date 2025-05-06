@@ -6,7 +6,7 @@
 /*   By: mipinhei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 10:07:00 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/06 14:13:31 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:42:31 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_flag_check_helper(const char *s, t_flags **fb)
 	{
 		if (*s == '0' && !(*fb)->in_precision && !(*fb)->in_value && !(*fb)->zeros)
 			(*fb)->zeros = 1;
-		else if (*s >= '1' && *s <= '9' || *s == '0')
+		else if ((*s >= '1' && *s <= '9') || *s == '0')
 		{
 			if ((*fb)->in_precision)
 				(*fb)->precision = (*fb)->precision * 10 + (*s - 48);

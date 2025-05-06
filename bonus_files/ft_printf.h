@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/06 12:31:50 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:40:37 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_flags
 	int		space;
 	int		plus;
 }			t_flags;
-
 
 void	ft_flag_check_helper(const char *s, t_flags **fb);
 
