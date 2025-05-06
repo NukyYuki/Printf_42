@@ -15,6 +15,7 @@ int main(void)
 	pf = printf("og -> |%c|\n", '0' - 256) - 9;
 	pf = printf("og -> |%c|\n", '0' + 256) - 9;
 	pf = printf("og -> |%c|\n", 0) - 9;
+	printf("%5%");
 	//pf = printf("OG -> |%s|\n", s) - 9;
 	//pf = printf("OG -> |%i|\n", i) - 9;
 	//pf = ft_printf("|%#015x|", i);

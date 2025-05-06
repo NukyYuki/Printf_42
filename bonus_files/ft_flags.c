@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/02 11:16:45 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:57:30 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_flags	*ft_flag_check(const char *s, int *count)
 			else
 				fbool->width = fbool->width * 10 + (s[i] - 48);
 			fbool->in_value = 1;
-
 		}
 		else if (s[i] == '+')
 			fbool->plus = 1;
@@ -56,7 +55,7 @@ t_flags	*ft_flag_check(const char *s, int *count)
 		fbool->zeros = 0;
 	if (fbool->plus == 1)
 		fbool->space = 0;
-	*count = i; // or *count += i; if variable flag_skip is not used in printf();
+	*count = i;
 	return (fbool);
 }
 
@@ -98,7 +97,8 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	flag_info = ft_flag_check(s, p_fs);
 	if (flag_info->in_precision == 1 && spec != 'p')
 	{
-		if (flag_info->precision > len && (spec != 's' && spec != 'c'))
+		ft_has_precision(flag_info, ret, &len, spec);
+		/*if (flag_info->precision > len && (spec != 's' && spec != 'c'))
 		{
 			len = flag_info->precision;
 			ret = ft_setchar_ra(ret, len, '0');
@@ -107,7 +107,7 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		{
 			len = flag_info->precision;
 			ret = ft_substr(ret, 0, len);
-		}
+		}*/
 	}
 	if (flag_info->hash == 1 || spec == 'p')
 		ret = ft_sethash(ret, &len, flag_info, spec);
@@ -115,15 +115,15 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		ret = ft_setchar_ra(ret, ++len, '+');
 	if (flag_info->space == 1 && (spec == 'd' || spec == 'i'))
 		ret = ft_setchar_ra(ret, ++len, ' ');
-/*	nova func a partir daqui  */
 	if (flag_info->width > len)
 	{
-		if (flag_info->minus == 1)
+		ft_width_bigger_len(flag_info, ret);
+/*		if (flag_info->minus == 1)
 			ret = ft_setspace_la(ret, flag_info->width);
 		else if (flag_info->zeros == 1)
 			ret = ft_setchar_ra(ret, flag_info->width, '0');
 		else
-			ret = ft_setchar_ra(ret, flag_info->width, ' ');
+			ret = ft_setchar_ra(ret, flag_info->width, ' ');*/
 	}
 	free(flag_info);
 	return (ret);

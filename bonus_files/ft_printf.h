@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/30 17:18:19 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:02:33 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ char	*ft_setchar_ra(char *ret, size_t len, char set);
 char	*ft_setspace_la(char *ret, size_t width);
 char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec);
 char	*ft_substr(char *s, unsigned int start, size_t len);
+int		ft_setpercent(va_list var_args, const char *str, int *p, int count);
+char	*ft_width_bigger_len(t_flags *flag_info, char *ret);
+char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len,
+			char spec);
 
 #endif
