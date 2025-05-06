@@ -5,9 +5,9 @@ int main(void)
 {
 
 //	ft_printf("ft -> |%c|\n", 'a' - 256);
-	ft_printf("ft -> |%c|\n", '\n' + 256);
+	ft_printf("ft -> |%c|\n", 'a' + 256);
 //	printf("og -> |%c|\n", 'a' - 256);
-	printf("og -> |%c|\n", '\n' + 256);
+	printf("og -> |%c|\n", 'a' + 256);
 //	ft_printf("ft -> |%s| %% %#06x", "ola", 42);
 
 	ft_printf("ft -> |%10.c|\n", 'a');

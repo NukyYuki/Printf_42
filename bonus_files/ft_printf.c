@@ -34,7 +34,6 @@ int	ft_printf(const char *str, ...)
 	va_end (var_args);
 	return (count);
 }
-
 /*			char spec = ft_strchr(str + ++i);
 			ret = ft_see_format(&spec, var_args);
 			int flag_skip = 0;
@@ -43,4 +42,3 @@ int	ft_printf(const char *str, ...)
 			count += ft_putstr(ret);
 			i++;
 			free(ret);*/
-	

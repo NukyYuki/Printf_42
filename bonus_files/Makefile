@@ -1,4 +1,4 @@
-SRCS	= ft_itoa_base.c ft_see_format.c ft_printf_utils.c ft_printf.c ft_putstr.c ft_flags.c ft_indent.c ft_itoa.c ft_setpercent.c ft_flags_helper.c
+SRCS	= ft_itoa.c ft_itoa_base.c ft_flags_helper.c ft_printf_utils2.c ft_see_format.c ft_printf.c ft_printf_utils.c ft_indent.c ft_putstr.c ft_flags.c ft_setpercent.c 
 OBJS	= ${SRCS:.c=.o}
 NAME	= libftprintf.a
 ARRCS	= ar rcs

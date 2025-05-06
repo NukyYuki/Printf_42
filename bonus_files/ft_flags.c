@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/06 16:53:21 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:49:45 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_flags	*ft_flag_check(const char *s, int *count)
 {
 	t_flags	*fbool;
 	int		i;
-	
+
 	fbool = ft_calloc(1, sizeof(t_flags));
 	i = -1;
 	while (check_spec(s[++i], "cspdiuxX%") == 0)

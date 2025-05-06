@@ -6,15 +6,14 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:53:50 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 20:08:03 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:47:04 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_init(char **return_val, char **base, char *c, int spec)
+void	ft_init(char **return_val, char **base, int spec)
 {
-	*c = 0;
 	*return_val = NULL;
 	if (spec == 'X')
 		*base = "0123456789ABCDEF";
@@ -26,17 +25,12 @@ void	ft_init(char **return_val, char **base, char *c, int spec)
 
 char	*ft_see_format(const char *s, va_list varg)
 {
-	int		c;
 	char	*return_val;
 	char	*base;
 
-	ft_init(&return_val, &base, (char *)&c, *s);
+	ft_init(&return_val, &base, *s);
 	if (*s == 'c')
-	{
-		//WARNING: check cases like char -/+ 256
-		c = va_arg(varg, int);
-		return (return_val = ft_dupchar(c));
-	}
+		return (return_val = ft_dupchar(va_arg(varg, int)));
 	else if (*s == 's')
 		return (return_val = ft_strdup(va_arg(varg, char *)));
 	else if (*s == 'i' || *s == 'd')

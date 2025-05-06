@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/06 15:40:37 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:45:00 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_putstr(const char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_see_format(const char *s, va_list var_args);
 char	*ft_strdup(const char *src);
-char	*ft_dupchar(int	n);
+char	*ft_dupchar(int n);
 char	ft_strchr(const char *s);
 int		check_spec(char const c, char *spec_lst);
 t_flags	*ft_flag_check(const char *s, int *count);

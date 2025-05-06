@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 18:10:26 by manmaria          #+#    #+#             */
-/*   Updated: 2025/04/29 18:54:55 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:43:59 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (arr);
 }
 
-char	*ft_dupchar(int	n)
+char	*ft_dupchar(int n)
 {
 	char	*dup;
 
@@ -76,51 +76,4 @@ char	*ft_dupchar(int	n)
 	dup[0] = n;
 	dup[1] = 0;
 	return (dup);
-}
-
-char	*ft_strdup(const char *src)
-{
-	char	*dup;
-	int		i;
-
-	dup = 0;
-	i = 0;
-	if (!src)
-		return (ft_strdup("(null)"));
-	while (src[i])
-		i++;
-	dup = (char *)malloc(sizeof(char) * (i + 1));
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (src[i])
-	{
-		dup[i] = src[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
-
-char	*ft_substr(char *s, unsigned int start, size_t len)
-{
-	char	*sub;
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	sub = (char *)malloc(sizeof(char) * (len + 1));
-	if (!sub)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		sub[i] = s[i + start];
-		i++;
-	}
-	sub[i] = '\0';
-	free(s);
-	return (sub);
 }
