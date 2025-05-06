@@ -22,13 +22,13 @@ typedef struct s_flags
 {
 	size_t	width;
 	size_t	precision;
-	int		in_precision;
-	int		in_value;
-	int		minus;
-	int		zeros;
-	int		hash;
-	int		space;
-	int		plus;
+	char	in_precision;
+	char	in_value;
+	char	minus;
+	char	zeros;
+	char	hash;
+	char	space;
+	char	plus;
 }			t_flags;
 
 void	ft_flag_check_helper(const char *s, t_flags **fb);
