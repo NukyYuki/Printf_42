@@ -4,6 +4,10 @@
 int main(void)
 {
 
+	char *s = NULL;
+
+	ft_printf("ft -> |%-10.5s|\n", s);
+	printf("OG -> |%-10.5s|\n", s);
 //	ft_printf("ft -> |%c|\n", 'a' - 256);
 	ft_printf("ft -> |%c|\n", 'a' + 256);
 //	printf("og -> |%c|\n", 'a' - 256);
