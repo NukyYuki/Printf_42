@@ -26,11 +26,6 @@ static size_t	lengths(unsigned long n, int base_len)
 	}
 	return (len);
 }
-	/*if (n < 0)
-	{
-		n = -n;
-		len++;
-	}*/
 
 static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 {
@@ -50,12 +45,6 @@ static char	*putnbr_str(unsigned long n, char *str, char *base, int base_len)
 	str[i] = base[n];
 	return (str);
 }
-/*if (n < 0)
-	{
-		n = -n;
-		str[i] = '-';
-		i++;
-	}*/
 
 char	*ft_itoa_pt(unsigned long n, char *base)
 {
@@ -69,13 +58,3 @@ char	*ft_itoa_pt(unsigned long n, char *base)
 	putnbr_str(n, itoa, base, base_len);
 	return (itoa);
 }
-/*#include <stdio.h>
-int	main(void)
-{
-		char	*s;
-
-		s = ft_itoa_base(-42, "0123456789abcdef");
-		printf("%s", s);
-		free(s);
-		return 0;
-}*/

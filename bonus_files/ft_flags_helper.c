@@ -34,25 +34,6 @@ void	ft_flag_check_helper(const char *s, t_flags **fb)
 	if ((*fb)->plus == 1)
 		(*fb)->space = 0;
 }
-/*		THE VERIFICATIONS ABOVE BEFORE TRIMMING FT_FLAG:
-		else if (s[i] >= '1' && s[i] <= '9')
-		{
-			if (fbool->in_precision == 1)
-				fbool->precision = fbool->precision * 10 + (s[i] - 48);
-			else
-				fbool->width = fbool->width * 10 + (s[i] - 48);
-			fbool->in_value = 1;
-		}
- 
-			if (!fbool->in_precision && !fbool->in_value && !fbool->zeros)
-				fbool->zeros = 1;
-			else if (fbool->in_precision)
-				fbool->precision = fbool->precision * 10 + (s[i] - 48);
-			else
-				fbool->width = fbool->width * 10 + (s[i] - 48);
-			fbool->in_value = 1;
-		}
-*/
 
 char	*ft_width_bigger_len(t_flags *flag_info, char *ret)
 {
@@ -76,6 +57,7 @@ char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len, char spec)
 	{
 		if (ft_strcmp(ret, "(nil)") == 0 || ft_strcmp(ret, "(null)") == 0)
 		{
+			*len = 0;
 			free(ret);
 			return (ft_strdup(""));
 		}

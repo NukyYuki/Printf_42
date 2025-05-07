@@ -43,6 +43,7 @@ char	*ft_see_format(const char *s, va_list var_args);
 char	*ft_strdup(const char *src);
 char	*ft_dupchar(int n);
 char	ft_strchr(const char *s);
+int		ft_strrchr_b(const char *s, int c);
 int		check_spec(char const c, char *spec_lst);
 t_flags	*ft_flag_check(const char *s, int *count);
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec);

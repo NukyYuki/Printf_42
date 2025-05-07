@@ -40,13 +40,7 @@ int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
 	spec = ft_strchr(str + ++(*p));
 	ret = ft_see_format(&spec, var_args);
 	ret = ft_flags(str + *p, ret, &flag_skip, spec);
-	*p += flag_skip;
-//	count += ft_putstr(ret);
-	*p += 1;
-	if (ft_strcmp(ret, "(nil)") == 0 || ft_strcmp(ret, "(null)") == 0)
-	{
-		return (ft_return_null(ret, count));
-	}
+	*p += flag_skip + 1;
 	count += ft_putstr(ret);
 	free(ret);
 	return (count);
@@ -74,11 +68,3 @@ int	ft_printf(const char *str, ...)
 	va_end (var_args);
 	return (count);
 }
-/*			char spec = ft_strchr(str + ++i);
-			ret = ft_see_format(&spec, var_args);
-			int flag_skip = 0;
-			ret = ft_flags(str + i, ret, &flag_skip, spec);
-			i += flag_skip;
-			count += ft_putstr(ret);
-			i++;
-			free(ret);*/

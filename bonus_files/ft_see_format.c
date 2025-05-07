@@ -23,6 +23,8 @@ void	ft_init(char **return_val, char **base, int spec)
 		*base = "0123456789";
 }
 
+//int	check_for_null();
+
 char	*ft_see_format(const char *s, va_list varg)
 {
 	char	*return_val;
@@ -42,4 +44,14 @@ char	*ft_see_format(const char *s, va_list varg)
 	else if (*s == '%')
 		return (return_val = ft_dupchar('%'));
 	return (NULL);
+}
+
+char	*ft_set_point(void *ptr, char *base)
+{
+	unsigned long	val;
+
+	val = (unsigned long)ptr;
+	if (!ptr)
+		return (ft_strdup("(nil)"));
+	return (ft_itoa_pt(val, base));
 }

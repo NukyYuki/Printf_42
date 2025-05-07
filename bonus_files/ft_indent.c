@@ -18,6 +18,7 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 	size_t	i;
 	size_t	k;
 
+	if (ft_strchr(ret, '-');
 	p_s = malloc((len + 1) * sizeof(char));
 	if (!p_s)
 		return (NULL);
@@ -53,7 +54,7 @@ char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 	int		bow;
 
 	bow = hash_init(len, &i, &k, fi);
-	if (ft_strcmp(ret, "(nil)") == 0 || ft_strcmp(ret, "(null)") == 0)
+	if (ft_strcmp(ret, "(nil)") == 0)
 		return (ret);
 	p_s = calloc((*len + bow + 1), sizeof(char));
 	if (!p_s)

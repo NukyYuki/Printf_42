@@ -64,30 +64,3 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	free(flag_info);
 	return (ret);
 }
-/*
-	if (flag_info->in_precision == 1 && spec != 'p')
-	{
-		if (flag_info->precision > len && (spec != 's' && spec != 'c'))
-		{
-			len = flag_info->precision;
-			ret = ft_setchar_ra(ret, len, '0');
-		}
-		else if (flag_info->precision < len && spec == 's')
-		{
-			len = flag_info->precision;
-			ret = ft_substr(ret, 0, len);
-		}
-	}
-*/
-/*
-if (flag_info->width > len)
-	{
-		//ret = ft_width_bigger_len(flag_info, ret);
-		if (flag_info->minus == 1)
-			ret = ft_setspace_la(ret, flag_info->width);
-		else if (flag_info->zeros == 1)
-			ret = ft_setchar_ra(ret, flag_info->width, '0');
-		else
-			ret = ft_setchar_ra(ret, flag_info->width, ' ');
-	}
-*/
