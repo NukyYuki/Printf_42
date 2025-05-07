@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 00:56:10 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/06 20:14:03 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:35:18 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ int	ft_putstr(const char *s)
 	return (write(1, s, ft_strlen(s)));
 }
 
+int	ft_return_null(char *ret, int count)
+{
+	count += ft_putstr(ret);
+	free(ret);
+	return (count);
+}
+
 int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
 {
 	char	*ret;
@@ -34,8 +41,13 @@ int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
 	ret = ft_see_format(&spec, var_args);
 	ret = ft_flags(str + *p, ret, &flag_skip, spec);
 	*p += flag_skip;
-	count += ft_putstr(ret);
+//	count += ft_putstr(ret);
 	*p += 1;
+	if (ft_strcmp(ret, "(nil)") == 0 || ft_strcmp(ret, "(null)") == 0)
+	{
+		return (ft_return_null(ret, count));
+	}
+	count += ft_putstr(ret);
 	free(ret);
 	return (count);
 }

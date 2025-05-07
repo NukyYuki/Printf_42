@@ -6,7 +6,7 @@
 /*   By: mipinhei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:02:39 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/06 22:03:25 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:00:14 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,17 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 	return (p_s);
 }
 
-void	hash_init(size_t *len, size_t *i, int *k, int *bow)
+int	hash_init(size_t *len, size_t *i, int *k, t_flags *fi)
 {
+	int	bow;
+
 	*len += 2;
-	*bow = 0;
+	bow = 0;
+	if (fi->width > *len && fi->zeros == 1)
+		bow = fi->width;
 	*i = 2;
 	*k = 0;
+	return (bow);
 }
 
 char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
@@ -47,9 +52,9 @@ char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 	int		k;
 	int		bow;
 
-	hash_init(len, &i, &k, &bow);
-	if (fi->width > *len && fi->zeros == 1)
-		bow = fi->width;
+	bow = hash_init(len, &i, &k, fi);
+	if (ft_strcmp(ret, "(nil)") == 0 || ft_strcmp(ret, "(null)") == 0)
+		return (ret);
 	p_s = calloc((*len + bow + 1), sizeof(char));
 	if (!p_s)
 		return (NULL);

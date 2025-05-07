@@ -6,7 +6,7 @@
 /*   By: mipinhei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 10:07:00 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/06 15:42:31 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:28:07 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len, char spec)
 	}
 	else if (flag_info->precision < *len && spec == 's')
 	{
+		if (ft_strcmp(ret, "(nil)") == 0 || ft_strcmp(ret, "(null)") == 0)
+		{
+			free(ret);
+			return (ft_strdup(""));
+		}
 		*len = flag_info->precision;
 		ret = ft_substr(ret, 0, *len);
 	}

@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:22:25 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/06 21:45:00 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:37:49 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,8 @@ char	*ft_width_bigger_len(t_flags *flag_info, char *ret);
 char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len,
 			char spec);
 char	*ft_itoa_pt(unsigned long n, char *base);
+char	*ft_set_point(void *ptr, char *base);
+int		ft_strcmp(char *str1, char *str2);
+int		ft_return_null(char *ret, int count);
 
 #endif

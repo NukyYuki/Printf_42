@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:53:50 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/07 11:21:37 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:39:25 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,10 @@ char	*ft_see_format(const char *s, va_list varg)
 		return (return_val = ft_strdup(va_arg(varg, char *)));
 	else if (*s == 'i' || *s == 'd')
 		return (return_val = ft_itoa(va_arg(varg, int)));
-	else if (*s == 'u')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
-	else if (*s == 'x' || *s == 'X')
+	else if (*s == 'x' || *s == 'X' || *s == 'u')
 		return (return_val = ft_itoa_base(va_arg(varg, unsigned int), base));
-/*	else if (*s == 'X')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned int), base));*/
 	else if (*s == 'p')
-		return (return_val = ft_itoa_pt(va_arg(varg, unsigned long), base));
+		return (return_val = ft_set_point(va_arg(varg, void *), base));
 	else if (*s == '%')
 		return (return_val = ft_dupchar('%'));
 	return (NULL);

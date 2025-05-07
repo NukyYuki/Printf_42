@@ -4,11 +4,11 @@
 int main(void)
 {
 
-//	char *s = NULL;
-	ft_printf("%p", NULL);
-	printf("\n%p", NULL);
-//	ft_printf("ft -> |%-10.5s|\n", s);
-//	printf("OG -> |%-10.5s|\n", s);
+	char *s = NULL;
+//	ft_printf("%p", NULL);
+//	printf("\n%p", NULL);
+	ft_printf("ft -> |%3.s|\n", s);
+	printf("OG -> |%3.s|\n", s);
 //	ft_printf("ft -> |%c|\n", 'a' - 256);
 //	ft_printf("ft -> |%c|\n", 'a' + 256);
 //	printf("og -> |%c|\n", 'a' - 256);
