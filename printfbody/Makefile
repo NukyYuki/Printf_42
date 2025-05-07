@@ -1,4 +1,4 @@
-SRCS	= ft_putnbr_decimal.c ft_see_format.c ft_printf.c ft_putnbr_base_hexa.c ft_printf_utils.c ft_putnbr_base_pointer.c
+SRCS	= ft_putnbr_decimal.c ft_see_format.c ft_printf.c ft_putnbr_base_hexa.c ft_printf_utils.c ft_putnbr_base_pointer.c ft_print_pt.c
 OBJS	= ${SRCS:.c=.o}
 NAME	= libftprintf.a
 ARRCS	= ar rcs

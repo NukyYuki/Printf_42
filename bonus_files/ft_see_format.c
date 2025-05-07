@@ -6,7 +6,7 @@
 /*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 11:53:50 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/06 21:47:04 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:21:37 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char	*ft_see_format(const char *s, va_list varg)
 		return (return_val = ft_itoa(va_arg(varg, int)));
 	else if (*s == 'u')
 		return (return_val = ft_itoa_base(va_arg(varg, unsigned long), base));
-	else if (*s == 'x')
+	else if (*s == 'x' || *s == 'X')
 		return (return_val = ft_itoa_base(va_arg(varg, unsigned int), base));
-	else if (*s == 'X')
-		return (return_val = ft_itoa_base(va_arg(varg, unsigned int), base));
+/*	else if (*s == 'X')
+		return (return_val = ft_itoa_base(va_arg(varg, unsigned int), base));*/
 	else if (*s == 'p')
 		return (return_val = ft_itoa_pt(va_arg(varg, unsigned long), base));
 	else if (*s == '%')

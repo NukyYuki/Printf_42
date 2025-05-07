@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 20:43:24 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/05 17:10:32 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:04:26 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,6 @@ int	ft_putchar(char c)
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	return (1);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*p_s;
-	size_t			i;
-
-	i = 0;
-	p_s = s;
-	while (i < n)
-		p_s[i++] = '\0';
 }
 
 int	ft_strlen(char *s)
