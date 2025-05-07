@@ -34,10 +34,10 @@ char	*ft_strdup(const char *src)
 	dup = 0;
 	i = 0;
 	if (!src)
-		return (ft_strdup("(null)"));
+		return (ft_return_null());
 	while (src[i])
 		i++;
-	dup = (char *)malloc(sizeof(char) * (i + 1));
+	dup = (char *)malloc(sizeof(char) *(i + 1));
 	if (!dup)
 		return (NULL);
 	i = 0;

@@ -18,7 +18,7 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 	size_t	i;
 	size_t	k;
 
-	p_s = malloc((len + 1) * sizeof(char));
+	p_s = calloc((len + 1), sizeof(char));
 	if (!p_s)
 		return (NULL);
 	i = 0;
@@ -27,7 +27,6 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 		p_s[i++] = set;
 	while (i < len)
 		p_s[i++] = ret[k++];
-	p_s[i] = '\0';
 	free(ret);
 	return (p_s);
 }

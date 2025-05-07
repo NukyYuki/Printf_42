@@ -60,6 +60,7 @@ char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len,
 char	*ft_itoa_pt(unsigned long n, char *base);
 char	*ft_set_point(void *ptr, char *base);
 int		ft_strcmp(char *str1, char *str2);
-int		ft_return_null(char *ret, int count);
+char	*ft_return_null(void);
+char	*ft_negzeros(t_flags *fi, char *ret, size_t *len);
 
 #endif

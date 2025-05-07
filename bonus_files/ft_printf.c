@@ -22,11 +22,9 @@ int	ft_putstr(const char *s)
 	return (write(1, s, ft_strlen(s)));
 }
 
-int	ft_return_null(char *ret, int count)
+char	*ft_return_null(void)
 {
-	count += ft_putstr(ret);
-	free(ret);
-	return (count);
+	return(ft_strdup("(null)"));
 }
 
 int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
