@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/07 16:32:30 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:09:29 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 	flag_info = ft_flag_check(s, p_fs);
 	if (spec != '%')
 	{
+		if (ft_strrchr_b(ret, '-') == 1)
 		if (flag_info->in_precision == 1 && spec != 'p')
 			ret = ft_has_precision(flag_info, ret, &len, spec);
 		if (flag_info->hash == 1 || spec == 'p')

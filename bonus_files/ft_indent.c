@@ -6,7 +6,7 @@
 /*   By: mipinhei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:02:39 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/07 15:00:14 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:07:28 by mipinhei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 	size_t	i;
 	size_t	k;
 
-	if (ft_strchr(ret, '-');
 	p_s = malloc((len + 1) * sizeof(char));
 	if (!p_s)
 		return (NULL);
