@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/07 18:09:29 by mipinhei         ###   ########.fr       */
+/*   Updated: 2025/05/08 20:00:40 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_flags	*ft_flag_check(const char *s, int *count)
 	*count = i;
 	return (fbool);
 }
+
 // if nbr == 0 && precision == 0, strdup ("");
 char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 {
@@ -63,14 +64,15 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 			ret = ft_has_precision(flag_info, ret, &len, spec);
 		if (flag_info->hash == 1 || spec == 'p')
 			ret = ft_sethash(ret, &len, flag_info, spec);
-		else if (flag_info->plus == 1)
+		else if (flag_info->plus == 1 && ft_strrchr_b(ret, '-') == 0 && (spec != 'd' || spec != 'i'))
 			ret = ft_setchar_ra(ret, ++len, '+');
 		if (flag_info->space == 1 && (spec == 'd' || spec == 'i'))
 			ret = ft_setchar_ra(ret, ++len, ' ');
 		if (flag_info->width > len)
 			ret = ft_width_bigger_len(flag_info, ret);
 	}
-	return (free(flag_info), ret);
+	free(flag_info);
+	return (ret);
 }
 
 	// FALTA METER UM ZERO
@@ -99,8 +101,9 @@ char	*ft_retmaisum(char *ret)
 
 char	*ft_negzeros(t_flags *fi, char *ret, size_t *len)
 {
-	char	*p_s;
-	char	*dup;
+	char	*p_s = NULL;
+	char	*dup = NULL;
+	char	*tmp = NULL;
 	size_t	i;
 	size_t	k;
 
@@ -112,23 +115,20 @@ char	*ft_negzeros(t_flags *fi, char *ret, size_t *len)
 	dup = ft_retmaisum(ret);
 	if (!dup)
 		return (NULL);
-	ret = NULL;
+	//ret = NULL;
 	if (fi->in_precision && (fi->precision > (*len - 1)))
-		ret = ft_setchar_ra(dup, fi->precision, '0');
+		/*ret*/tmp = ft_setchar_ra(dup, fi->precision, '0');
 	else if (dup && fi->zeros && (fi->width > (ft_strlen(dup) + 1)))
-		ret = ft_setchar_ra(dup, fi->width - 1, '0');
+		/*ret*/tmp = ft_setchar_ra(dup, fi->width - 1, '0');
 	else
-		return (NULL);
-	p_s = calloc(ft_strlen(ret) + 2, sizeof(char));
+		return (ft_setchar_ra(dup, ft_strlen(dup) + 1, '-'));
+	                     //ret was here
+	p_s = calloc(ft_strlen(tmp) + 2, sizeof(char));
 	if (!p_s)
-		return (free(dup), NULL);
+		return (free(tmp), NULL);
 	p_s[i++] = '-';
-	if (ret)
-	{
-		while (ret[k])
-			p_s[i++] = ret[k++];
-		free(ret);
-	}
+	ft_strlcpy(p_s + 1, tmp, ft_strlen(tmp) + 1);
+	free(tmp);
 	*len = ft_strlen(p_s);
 	return (p_s);
 }

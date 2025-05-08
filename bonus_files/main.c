@@ -1,24 +1,65 @@
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int main(void)
 {
-	printf("OG -> {%3c}", 0);
-	ft_printf("\nft -> {%3c}", 0);
-	ft_printf("ft -> ||%.0i||\n", 0);
-	printf("OG -> ||%.0i||\n", 0);
-	printf("og -> |%10.6i|\n", -32);
+
+	ft_printf("ft -> %#x\n", 0);
+	//printf("OG -> %#x\n", 0);
+	ft_printf("ft -> %#x %#x %#x %#x %#x %#x %#x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	//printf("OG -> %#x %#x %#x %#x %#x %#x %#x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	ft_printf("ft -> %#X\n", 0);
+	//printf("OG -> %#X\n", 0);
+	ft_printf("ft -> %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("OG -> %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	ft_printf("ft -> %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+	printf("OG -> %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+
+	ft_printf("\n-- for 02d, '-1' --\n");
+	ft_printf("ft -> |%02d|\n", -1);
+	printf("OG -> |%02d|\n", -1);
+
+	ft_printf("\n-- for 01d, '-1' --\n");
+	ft_printf("ft -> |%01d|\n", -9);
+	printf("OG -> |%01d|\n", -9);
+
+	printf("\n-- -[1.2.3]c 0, '1', '2' --\n");
+	ft_printf("ft ->| |%-2c| %-2c %-3c |\n", 0, '1', '2');
+	printf("OG ->| |%-2c| %-2c %-3c |\n", 0, '1', '2');
+
+	ft_printf("\n-- -[1.2.3]c '0', 0, '1' --\n");
+	ft_printf("ft ->| %-1c %-2c %-3c |\n", '0', 0, '1');
+	printf("OG ->| %-1c %-2c %-3c |\n", '0', 0, '1');
+
+	ft_printf("\n-- -[1.2.3]c '2', '1' ,0 --\n");
+	ft_printf("ft ->| %-1c %-2c %-3c |\n", '2', '1', 0);
+	printf("OG ->| %-1c %-2c %-3c |\n", '2', '1', 0);
+
+	ft_printf("\n--spec c '0', 0, '1' --\n");
+	ft_printf("ft ->| %c %c %c |\n", '0', 0, '1');
+	printf("OG ->| %c %c %c |\n", '0', 0, '1');
+
+	ft_printf("\n--spec c '2', '1' 0 --\n");
+	ft_printf("ft ->| %c %c %c |\n", '2', '1', 0);
+	printf("OG ->| %c %c %c |\n", '2', '1', 0);
+
+	ft_printf("\n--spec c 0, '1', '2' --\n");
+	ft_printf("ft ->| %c %c %c |\n", 0, '1', '2');
+	printf("OG ->| %c %c %c |\n", 0, '1', '2');
+/*
+	ft_printf("\n-- for 10.6i, '-32' --\n");
 	ft_printf("ft -> |%10.6i|\n", -32);
-	ft_printf("ft -> ||%.5i||\n", -32);
-	ft_printf("ft -> %.6i\n", -3);
-	ft_printf("ft -> %.6i\n", -3);
-	//printf("OG -> %.6i\n", -3);
-	//ft_printf("ft -> %07i\n", -54);
-	//printf("OG -> %07i\n", -54);
-	//ft_printf("ft -> %10.5i\n", -216);
-	//printf("OG -> %10.5i\n", -216);
-	//ft_printf("ft -> %3.7i\n", -2375);
-	//printf("OG -> %3.7i\n", -2375);
+	printf("OG -> |%10.6i|\n", -3);
+	ft_printf("\n-- for 07i, '-52' --\n");
+	ft_printf("ft -> |%07i|\n", -54);
+	printf("OG -> |%07i|\n", -54);
+	ft_printf("\n -- for 10.5i, '-216' --\n");
+	ft_printf("ft -> |%10.5i|\n", -216);
+	printf("OG -> |%10.5i|\n", -216);
+	ft_printf("\n -- for 3.7i, '-2375' --\n");
+	ft_printf("ft -> |%3.7i|\n", -2375);
+	printf("OG -> |%3.7i|\n", -2375);*/
 	//printf("OG -> |%k%j|\n");
 	//printf("-- printed char count --\nft -> %d\nOG -> %d\n", ftf, pf);
 	return 0;
