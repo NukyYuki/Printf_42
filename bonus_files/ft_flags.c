@@ -105,13 +105,11 @@ char	*ft_negzeros(t_flags *fi, char *ret, size_t *len)
 	char	*dup = NULL;
 	char	*tmp = NULL;
 	size_t	i;
-	size_t	k;
 
 	if ((fi->zeros == 0 && fi->precision == 0)
 		|| (fi->precision <= (*len - 1) && fi->in_precision))
 		return (ret);
 	i = 0;
-	k = 0;
 	dup = ft_retmaisum(ret);
 	if (!dup)
 		return (NULL);
