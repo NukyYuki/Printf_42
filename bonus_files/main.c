@@ -5,28 +5,30 @@
 int main(void)
 {
 
-	ft_printf("ft -> %#x\n", 0);
+	//ft_printf("ft -> {% -10d}\n", -101);
+	//printf("OG -> {%-10d}\n", -101);
+	//ft_printf("ft -> %#x\n", 0);
 	//printf("OG -> %#x\n", 0);
-	ft_printf("ft -> %#x %#x %#x %#x %#x %#x %#x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	//ft_printf("ft -> %#x %#x %#x %#x %#x %#x %#x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 	//printf("OG -> %#x %#x %#x %#x %#x %#x %#x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	ft_printf("ft -> %#X\n", 0);
+	//ft_printf("ft -> %#X\n", 0);
 	//printf("OG -> %#X\n", 0);
-	ft_printf("ft -> %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf("OG -> %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	ft_printf("ft -> %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	printf("OG -> %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+	//ft_printf("ft -> %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	//printf("OG -> %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	//ft_printf("ft -> %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+	//printf("OG -> %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%%%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
 
-	ft_printf("\n-- for 02d, '-1' --\n");
-	ft_printf("ft -> |%02d|\n", -1);
-	printf("OG -> |%02d|\n", -1);
+	//ft_printf("\n-- for 02d, '-1' --\n");
+	//ft_printf("ft -> |%02d|\n", -1);
+	//printf("OG -> |%02d|\n", -1);
 
-	ft_printf("\n-- for 01d, '-1' --\n");
-	ft_printf("ft -> |%01d|\n", -9);
-	printf("OG -> |%01d|\n", -9);
+	//ft_printf("\n-- for 01d, '-1' --\n");
+	//ft_printf("ft -> |%01d|\n", -9);
+	//printf("OG -> |%01d|\n", -9);
 
 	printf("\n-- -[1.2.3]c 0, '1', '2' --\n");
-	ft_printf("ft ->| |%-2c| %-2c %-3c |\n", 0, '1', '2');
-	printf("OG ->| |%-2c| %-2c %-3c |\n", 0, '1', '2');
+	ft_printf("ft ->{ |%-2c| %-2c %-3c }\n", 0, '1', '2');
+	printf("OG ->{ |%-2c| %-2c %-3c }\n", 0, '1', '2');
 
 	ft_printf("\n-- -[1.2.3]c '0', 0, '1' --\n");
 	ft_printf("ft ->| %-1c %-2c %-3c |\n", '0', 0, '1');

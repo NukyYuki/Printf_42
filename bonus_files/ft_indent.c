@@ -53,6 +53,8 @@ char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 	int		k;
 	int		bow;
 
+	if (ft_strcmp(ret, "0") == 0)
+		return (ret);
 	bow = hash_init(len, &i, &k, fi);
 	if (ft_strcmp(ret, "(nil)") == 0)
 		return (ret);
