@@ -18,8 +18,6 @@ char	*ft_setchar_ra(char *ret, size_t len, char set)
 	size_t	i;
 	size_t	k;
 
-	//if (!*ret)
-	//	len--;
 	p_s = calloc((len + 1), sizeof(char));
 	if (!p_s)
 		return (NULL);
@@ -82,8 +80,6 @@ char	*ft_setspace_la(char *ret, size_t width)
 	char	*p_s;
 	size_t	i;
 
-	//if (!*ret)
-//		width--;
 	p_s = malloc((width + 1) * sizeof(char));
 	if (!p_s)
 		return (NULL);
