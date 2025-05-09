@@ -73,14 +73,15 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 			ret = ft_setchar_ra(ret, ++len, ' ');
 		}
 		if (flag_info->width > len)
+		{
+			if(spec == 'c' && !*ret)
+				flag_info->width--;
 			ret = ft_width_bigger_len(flag_info, ret);
+		}
 	}
 	free(flag_info);
 	return (ret);
 }
-
-	// FALTA METER UM ZERO
-	// DOUBLE FREE PQ RET + 1
 
 char	*ft_retmaisum(char *ret)
 {

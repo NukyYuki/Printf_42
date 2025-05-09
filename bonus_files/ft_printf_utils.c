@@ -18,6 +18,8 @@ size_t	ft_strlen(const char *s)
 
 	if (!s)
 		return (0);
+	//if (!*s)
+	//	return (1);
 	i = 0;
 	while (s[i])
 		i++;
@@ -72,6 +74,12 @@ char	*ft_dupchar(int n)
 {
 	char	*dup;
 
+	if (n == 0)
+	{
+		dup = malloc(sizeof(char));
+		dup[0] = 0;
+		return (dup);
+	}
 	dup = malloc(sizeof(char) * 2);
 	if (!dup)
 		return (NULL);

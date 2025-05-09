@@ -26,29 +26,30 @@ int main(void)
 	//ft_printf("ft -> |%01d|\n", -9);
 	//printf("OG -> |%01d|\n", -9);
 
-	printf("\n-- -[1.2.3]c 0, '1', '2' --\n");
-	ft_printf("ft ->{ |%-2c| %-2c %-3c }\n", 0, '1', '2');
-	printf("OG ->{ |%-2c| %-2c %-3c }\n", 0, '1', '2');
-
 	ft_printf("\n-- -[1.2.3]c '0', 0, '1' --\n");
-	ft_printf("ft ->| %-1c %-2c %-3c |\n", '0', 0, '1');
-	printf("OG ->| %-1c %-2c %-3c |\n", '0', 0, '1');
+	printf("lenft -> %d\n", ft_printf("ft ->| %-1c {%-2c} %-3c |\n", '0', 0, '1'));
+	printf("lenOg -> %d\n", printf("OG ->| %-1c {%-2c} %-3c |\n", '0', 0, '1'));
 
 	ft_printf("\n-- -[1.2.3]c '2', '1' ,0 --\n");
-	ft_printf("ft ->| %-1c %-2c %-3c |\n", '2', '1', 0);
-	printf("OG ->| %-1c %-2c %-3c |\n", '2', '1', 0);
+	printf("lenft -> %d\n", ft_printf("ft ->| %-1c %-2c {%3c} |\n", '2', '1', 0));
+	printf("lenOg -> %d\n", printf("OG ->| %-1c %-2c {%3c} |\n", '2', '1', 0));
+
+	printf("\n-- -[1.2.3]c 0, '1', '2' --\n");
+	printf("\nlenft -> %d\n", ft_printf("ft ->{ |%-2c| %-2c {%-3c} |\n", 0, '1', '2'));
+	printf("\nlenOG -> %d\n", printf("OG ->{ |%-2c| %-2c {%-3c} |\n", 0, '1', '2'));
+
 
 	ft_printf("\n--spec c '0', 0, '1' --\n");
-	ft_printf("ft ->| %c %c %c |\n", '0', 0, '1');
-	printf("OG ->| %c %c %c |\n", '0', 0, '1');
+	printf("lenft -> %d\n", ft_printf("ft ->| %c %c %c |\n", '0', 0, '1'));
+	printf("lenOg -> %d\n", printf("OG ->| %c %c %c |\n", '0', 0, '1'));
 
 	ft_printf("\n--spec c '2', '1' 0 --\n");
-	ft_printf("ft ->| %c %c %c |\n", '2', '1', 0);
-	printf("OG ->| %c %c %c |\n", '2', '1', 0);
+	printf("lenft -> %d\n", ft_printf("ft ->| %c %c %c |\n", '2', '1', 0));
+	printf("lenOg -> %d\n", printf("OG ->| %c %c %c |\n", '2', '1', 0));
 
 	ft_printf("\n--spec c 0, '1', '2' --\n");
-	ft_printf("ft ->| %c %c %c |\n", 0, '1', '2');
-	printf("OG ->| %c %c %c |\n", 0, '1', '2');
+	printf("lenft -> %d\n", ft_printf("ft ->| %c %c %c |\n", 0, '1', '2'));
+	printf("lenOg -> %d\n", printf("OG ->| %c %c %c |\n", 0, '1', '2'));
 /*
 	ft_printf("\n-- for 10.6i, '-32' --\n");
 	ft_printf("ft -> |%10.6i|\n", -32);

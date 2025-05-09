@@ -19,12 +19,28 @@ int	ft_putchar(int c)
 
 int	ft_putstr(const char *s)
 {
-	return (write(1, s, ft_strlen(s)));
+	int len;
+
+	len = 0;
+	/*while (*s)
+	{
+		s++;
+		len++;
+	}*/
+	len += write(1, s, ft_strlen(s));
+	return (len);
 }
 
 char	*ft_return_null(void)
 {
 	return(ft_strdup("(null)"));
+}
+
+int	ft_putstr_spec(const char *s, char spec)
+{
+	if (spec == 'c' && !*s)
+		return (write(1, "", 1));
+	return (write(1, s, ft_strlen(s)));
 }
 
 int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
@@ -39,7 +55,7 @@ int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
 	ret = ft_see_format(&spec, var_args);
 	ret = ft_flags(str + *p, ret, &flag_skip, spec);
 	*p += flag_skip + 1;
-	count += ft_putstr(ret);
+	count += ft_putstr_spec(ret, spec);
 	free(ret);
 	return (count);
 }
