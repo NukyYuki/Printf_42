@@ -44,7 +44,7 @@ int	ft_putstr_spec(const char *s, char spec)
 	if (spec == 1)
 		i += write(1, "", 1);
 	if (spec == 'c' && !*s)
-		i+= write(1, "", 1);
+		i += write(1, "", 1);
 	else
 		i += write(1, s, ft_strlen(s));
 	return (i);

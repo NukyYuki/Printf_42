@@ -27,10 +27,10 @@ int main(void)
 	printf("OG -> [% -10d]\n", -94);
 	ft_printf("ft -> [% -10d]\n", 94);
 	printf("OG -> [% -10d]\n", 94);*/
-	printf("ft: [%d]\n", ft_printf("ft %5c", '\0'));
-	printf("Og: [%d]\n", printf("Og %5c", '\0'));
-	printf("ft: [%d]\n", ft_printf("ft {%3c}", 0));
-	printf("Og: [%d]\n", printf("Og {%3c}", 0));
+	printf("ft: [%d]\n", ft_printf("ft {%5c} ", 0));
+	printf("Og: [%d]\n", printf("Og {%5c} ", 0));
+	printf("  ft: [%d]\n", ft_printf("ft {%3c} ", 0));
+	printf("  Og: [%d]\n", printf("Og {%3c} ", 0));
 
 	/*ft_printf("\n-- -[1.2.3]c '0', 0, '1' --\n");
 	printf("lenft -> %d\n", ft_printf("ft ->| %-1c {%-2c} %-3c |\n", '0', 0, '1'));
