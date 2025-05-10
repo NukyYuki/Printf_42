@@ -42,7 +42,7 @@ t_flags	*ft_flag_check(const char *s, int *count)
 }
 
 // if nbr == 0 && precision == 0, strdup ("");
-char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
+char	*ft_flags(const char *s, char *ret, int *p_fs, char *spec)
 {
 	t_flags	*flag_info;
 	size_t	len;
@@ -56,17 +56,17 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		ret = NULL;
 		ret = ft_strdup("");
 	}
-	if (spec != '%')
+	if (*spec != '%')
 	{
-		if (ft_strrchr_b(ret, '-') == 1 && (spec == 'd' || spec == 'i'))
+		if (ft_strrchr_b(ret, '-') == 1 && (*spec == 'd' || *spec == 'i'))
 			ret = ft_negzeros(flag_info, ret, &len);
-		else if (flag_info->in_precision == 1 && spec != 'p')
-			ret = ft_has_precision(flag_info, ret, &len, spec);
-		if (flag_info->hash == 1 || spec == 'p')
-			ret = ft_sethash(ret, &len, flag_info, spec);
-		else if (flag_info->plus == 1 && ft_strrchr_b(ret, '-') == 0 && (spec != 'd' || spec != 'i'))
+		else if (flag_info->in_precision == 1 && *spec != 'p')
+			ret = ft_has_precision(flag_info, ret, &len, *spec);
+		if (flag_info->hash == 1 || *spec == 'p')
+			ret = ft_sethash(ret, &len, flag_info, *spec);
+		else if (flag_info->plus == 1 && ft_strrchr_b(ret, '-') == 0 && (*spec != 'd' || *spec != 'i'))
 			ret = ft_setchar_ra(ret, ++len, '+');
-		if (flag_info->space == 1 && (spec == 'd' || spec == 'i')
+		if (flag_info->space == 1 && (*spec == 'd' || *spec == 'i')
 			/*&& flag_info->width <= len*/)
 		{
 			if (ft_strrchr_b(ret, '-') == 1)
@@ -75,8 +75,11 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char spec)
 		}
 		if (flag_info->width > len)
 		{
-			if(spec == 'c' && !*ret)
+			if(*spec == 'c' && !*ret)
+			{
 				flag_info->width--;
+				*spec = 1;
+			}
 			ret = ft_width_bigger_len(flag_info, ret);
 		}
 	}

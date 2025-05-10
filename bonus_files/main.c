@@ -23,12 +23,16 @@ int main(void)
 	//printf("OG -> |%02d|\n", -1);
 
 	//ft_printf("\n-- for 01d, '-1' --\n");
-	ft_printf("ft -> [% -10d]\n", -94);
+	/*ft_printf("ft -> [% -10d]\n", -94);
 	printf("OG -> [% -10d]\n", -94);
 	ft_printf("ft -> [% -10d]\n", 94);
-	printf("OG -> [% -10d]\n", 94);
+	printf("OG -> [% -10d]\n", 94);*/
+	printf("ft: [%d]\n", ft_printf("ft %5c", '\0'));
+	printf("Og: [%d]\n", printf("Og %5c", '\0'));
+	printf("ft: [%d]\n", ft_printf("ft {%3c}", 0));
+	printf("Og: [%d]\n", printf("Og {%3c}", 0));
 
-	ft_printf("\n-- -[1.2.3]c '0', 0, '1' --\n");
+	/*ft_printf("\n-- -[1.2.3]c '0', 0, '1' --\n");
 	printf("lenft -> %d\n", ft_printf("ft ->| %-1c {%-2c} %-3c |\n", '0', 0, '1'));
 	printf("lenOg -> %d\n", printf("OG ->| %-1c {%-2c} %-3c |\n", '0', 0, '1'));
 
@@ -51,7 +55,7 @@ int main(void)
 
 	ft_printf("\n--spec c 0, '1', '2' --\n");
 	printf("lenft -> %d\n", ft_printf("ft ->| %c %c %c |\n", 0, '1', '2'));
-	printf("lenOg -> %d\n", printf("OG ->| %c %c %c |\n", 0, '1', '2'));
+	printf("lenOg -> %d\n", printf("OG ->| %c %c %c |\n", 0, '1', '2'));*/
 /*
 	ft_printf("\n-- for 10.6i, '-32' --\n");
 	ft_printf("ft -> |%10.6i|\n", -32);

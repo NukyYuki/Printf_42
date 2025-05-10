@@ -46,7 +46,7 @@ char	ft_strchr(const char *s);
 int		ft_strrchr_b(const char *s, int c);
 int		check_spec(char const c, char *spec_lst);
 t_flags	*ft_flag_check(const char *s, int *count);
-char	*ft_flags(const char *s, char *ret, int *p_fs, char spec);
+char	*ft_flags(const char *s, char *ret, int *p_fs, char *spec);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned int n, char *base);
 char	*ft_setchar_ra(char *ret, size_t len, char set);
