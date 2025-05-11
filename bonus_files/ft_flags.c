@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 22:15:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/08 20:00:40 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/11 01:47:09 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,17 @@ t_flags	*ft_flag_check(const char *s, int *count)
 	return (fbool);
 }
 
-// if nbr == 0 && precision == 0, strdup ("");
+char	*spec_fml(char *ret, t_flags *fi);
+
 char	*ft_flags(const char *s, char *ret, int *p_fs, char *spec)
 {
-	t_flags	*flag_info;
+	t_flags	*finfo;
 	size_t	len;
 
 	len = ft_strlen(ret);
-	flag_info = ft_flag_check(s, p_fs);
-	if (ft_strcmp(ret, "0") == 0 && !flag_info->precision
-		&& flag_info->in_precision == 1)
+	finfo = ft_flag_check(s, p_fs);
+	if (ft_strcmp(ret, "0") == 0 && !finfo->precision
+		&& finfo->in_precision == 1)
 	{
 		free(ret);
 		ret = NULL;
@@ -59,38 +60,59 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char *spec)
 	if (*spec != '%')
 	{
 		if (ft_strrchr_b(ret, '-') == 1 && (*spec == 'd' || *spec == 'i'))
-			ret = ft_negzeros(flag_info, ret, &len);
-		else if (flag_info->in_precision == 1 && *spec != 'p')
-			ret = ft_has_precision(flag_info, ret, &len, *spec);
-		if (flag_info->hash == 1 || *spec == 'p')
-			ret = ft_sethash(ret, &len, flag_info, *spec);
-		else if (flag_info->plus == 1 && ft_strrchr_b(ret, '-') == 0 && (*spec != 'd' || *spec != 'i'))
+			ret = ft_negzeros(finfo, ret, &len);
+		else if (finfo->in_precision == 1 && *spec != 'p')
+			ret = ft_has_precision(finfo, ret, &len, *spec);
+		if (finfo->hash == 1 || *spec == 'p')
+			ret = ft_sethash(ret, &len, finfo, *spec);
+		else if (finfo->plus == 1 && ft_strrchr_b(ret, '-') == 0 && (*spec != 'd' || *spec != 'i'))
 			ret = ft_setchar_ra(ret, ++len, '+');
-		if (flag_info->space == 1 && (*spec == 'd' || *spec == 'i')
-			/*&& flag_info->width <= len*/)
-		{
-			if (ft_strrchr_b(ret, '-') == 1)
-				len--;
+		if (finfo->space == 1 && (*spec == 'd' || *spec == 'i')
+			&& !ft_strrchr_b(ret, '-'))
 			ret = ft_setchar_ra(ret, ++len, ' ');
-		}
-		if (flag_info->width > len)
+		if (finfo->width > len)
 		{
-			if(*spec == 'c' && !*ret)
+			if (*spec == 'c' && !*ret)
 			{
-				flag_info->width--;
 				*spec = 1;
+				ret = spec_fml(ret, finfo);
 			}
-			ret = ft_width_bigger_len(flag_info, ret);
+			else
+				ret = ft_width_bigger_len(finfo, ret);
 		}
 	}
-	free(flag_info);
+	free(finfo);
 	return (ret);
+}
+
+char	*spec_fml(char *ret, t_flags *fi)
+{
+	char		*s;
+	size_t		i;
+
+	i = 0;
+	if (!fi->minus)
+		fi->width--;
+	s = malloc(sizeof(char) * fi->width + 1);
+	if (!s)
+		return (NULL);
+	if (fi->minus)
+	{
+		s[0] = 0;
+		while (++i < fi->width)
+			s[i] = ' ';
+	}
+	else if (!fi->minus)
+		while (i < fi->width)
+			s[i++] = ' ';
+	s[i] = 0;
+	free(ret);
+	return (s);
 }
 
 char	*ft_retmaisum(char *ret)
 {
-	char *dup;
-
+	char	*dup;
 	size_t	i;
 
 	i = ft_strlen(ret);
@@ -110,9 +132,9 @@ char	*ft_retmaisum(char *ret)
 
 char	*ft_negzeros(t_flags *fi, char *ret, size_t *len)
 {
-	char	*p_s = NULL;
-	char	*dup = NULL;
-	char	*tmp = NULL;
+	char	*p_s;
+	char	*dup;
+	char	*tmp;
 	size_t	i;
 
 	if ((fi->zeros == 0 && fi->precision == 0)
@@ -122,20 +144,17 @@ char	*ft_negzeros(t_flags *fi, char *ret, size_t *len)
 	dup = ft_retmaisum(ret);
 	if (!dup)
 		return (NULL);
-	//ret = NULL;
 	if (fi->in_precision && (fi->precision > (*len - 1)))
-		/*ret*/tmp = ft_setchar_ra(dup, fi->precision, '0');
+		tmp = ft_setchar_ra(dup, fi->precision, '0');
 	else if (dup && fi->zeros && (fi->width > (ft_strlen(dup) + 1)))
-		/*ret*/tmp = ft_setchar_ra(dup, fi->width - 1, '0');
+		tmp = ft_setchar_ra(dup, fi->width - 1, '0');
 	else
 		return (ft_setchar_ra(dup, ft_strlen(dup) + 1, '-'));
-	                     //ret was here
 	p_s = calloc(ft_strlen(tmp) + 2, sizeof(char));
-	if (!p_s)
-		return (free(tmp), NULL);
+	if (!p_s || !tmp)
+		return (free(tmp), free(tmp), NULL);
 	p_s[i++] = '-';
 	ft_strlcpy(p_s + 1, tmp, ft_strlen(tmp) + 1);
-	free(tmp);
 	*len = ft_strlen(p_s);
-	return (p_s);
+	return (free(tmp), p_s);
 }
