@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-t_flags	*ft_flag_check(const char *s, int *count)
+t_flags	*ft_flagcheck(const char *s, int *count)
 {
 	t_flags	*fbool;
 	int		i;
@@ -26,70 +26,60 @@ t_flags	*ft_flag_check(const char *s, int *count)
 		else if (s[i] == '.')
 			fbool->in_precision = 1;
 		else if (s[i] >= '1' && s[i] <= '9')
-			ft_flag_check_helper(s + i, &fbool);
+			ft_flagcheck_helper(s + i, &fbool);
 		else if (s[i] == ' ')
 			fbool->space = 1;
 		else if (s[i] == '-')
 			fbool->minus = 1;
 		else if (s[i] == '0')
-			ft_flag_check_helper(s + i, &fbool);
+			ft_flagcheck_helper(s + i, &fbool);
 		else if (s[i] == '+')
 			fbool->plus = 1;
 	}
-	ft_flag_check_helper(s + i, &fbool);
+	ft_flagcheck_helper(s + i, &fbool);
 	*count = i;
 	return (fbool);
 }
 
-char	*spec_fml(char *ret, t_flags *fi);
+char	*flags_helper(char **ret)
+{
+	return (free(*ret), ft_strdup(""));
+}
 
 char	*ft_flags(const char *s, char *ret, int *p_fs, char *spec)
 {
-	t_flags	*finfo;
+	t_flags	*fi;
 	size_t	len;
 
 	len = ft_strlen(ret);
-	finfo = ft_flag_check(s, p_fs);
-	if (ft_strcmp(ret, "0") == 0 && !finfo->precision
-		&& finfo->in_precision == 1)
-	{
-		free(ret);
-		ret = NULL;
-		ret = ft_strdup("");
-	}
-	if (*spec != '%')
-	{
-		if (ft_strrchr_b(ret, '-') == 1 && (*spec == 'd' || *spec == 'i'))
-			ret = ft_negzeros(finfo, ret, &len);
-		else if (finfo->in_precision == 1 && *spec != 'p')
-			ret = ft_has_precision(finfo, ret, &len, *spec);
-		if (finfo->hash == 1 || *spec == 'p')
-			ret = ft_sethash(ret, &len, finfo, *spec);
-		else if (finfo->plus == 1 && ft_strrchr_b(ret, '-') == 0 && (*spec != 'd' || *spec != 'i'))
-			ret = ft_setchar_ra(ret, ++len, '+');
-		if (finfo->space == 1 && (*spec == 'd' || *spec == 'i')
-			&& !ft_strrchr_b(ret, '-'))
-			ret = ft_setchar_ra(ret, ++len, ' ');
-		if (finfo->width > len)
-		{
-			if (*spec == 'c' && !*ret)
-			{
-				*spec = 1;
-				ret = spec_fml(ret, finfo);
-			}
-			else
-				ret = ft_width_bigger_len(finfo, ret);
-		}
-	}
-	free(finfo);
-	return (ret);
+	fi = ft_flagcheck(s, p_fs);
+	if (ft_strcmp(ret, "0") == 0 && !fi->precision && fi->in_precision)
+		ret = flags_helper(&ret);
+	if (*spec == '%')
+		return (free(fi), ret);
+	if (ft_strrchr_b(ret, '-') == 1 && (check_spec(*spec, "di")))
+		ret = ft_negzeros(fi, ret, &len);
+	else if (fi->in_precision == 1 && *spec != 'p')
+		ret = ft_has_precision(fi, ret, &len, *spec);
+	if (fi->hash == 1 || *spec == 'p')
+		ret = ft_sethash(ret, &len, fi, *spec);
+	else if (fi->plus == 1 && check_spec(*spec, "di")
+		&& !ft_strrchr_b(ret, '-'))
+		ret = ft_setchar_ra(ret, ++len, '+');
+	if (fi->space == 1 && check_spec(*spec, "di") && !ft_strrchr_b(ret, '-'))
+		ret = ft_setchar_ra(ret, ++len, ' ');
+	if (fi->width > len)
+		ret = ft_check_ifnull(ret, fi, &spec);
+	return (free(fi), ret);
 }
 
-char	*spec_fml(char *ret, t_flags *fi)
+char	*ft_check_ifnull(char *ret, t_flags *fi, char **spec)
 {
 	char		*s;
 	size_t		i;
 
+	if (**spec != 'c' || *ret)
+		return (ret = ft_width_bigger_len(fi, ret));
 	i = 0;
 	if (!fi->minus)
 		fi->width--;
@@ -106,8 +96,8 @@ char	*spec_fml(char *ret, t_flags *fi)
 		while (i < fi->width)
 			s[i++] = ' ';
 	s[i] = 0;
-	free(ret);
-	return (s);
+	**spec = 1;
+	return (free(ret), s);
 }
 
 char	*ft_retmaisum(char *ret)

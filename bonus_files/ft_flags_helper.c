@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_flag_check_helper(const char *s, t_flags **fb)
+void	ft_flagcheck_helper(const char *s, t_flags **fb)
 {
 	if (*s >= '0' && *s <= '9')
 	{
@@ -35,25 +35,25 @@ void	ft_flag_check_helper(const char *s, t_flags **fb)
 		(*fb)->space = 0;
 }
 
-char	*ft_width_bigger_len(t_flags *flag_info, char *ret)
+char	*ft_width_bigger_len(t_flags *fi, char *ret)
 {
-	if (flag_info->minus == 1)
-		ret = ft_setspace_la(ret, flag_info->width);
-	else if (flag_info->zeros == 1)
-		ret = ft_setchar_ra(ret, flag_info->width, '0');
+	if (fi->minus == 1)
+		ret = ft_setspace_la(ret, fi->width);
+	else if (fi->zeros == 1)
+		ret = ft_setchar_ra(ret, fi->width, '0');
 	else
-		ret = ft_setchar_ra(ret, flag_info->width, ' ');
+		ret = ft_setchar_ra(ret, fi->width, ' ');
 	return (ret);
 }
 
-char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len, char spec)
+char	*ft_has_precision(t_flags *fi, char *ret, size_t *len, char spec)
 {
-	if (flag_info->precision > *len && (spec != 's' && spec != 'c'))
+	if (fi->precision > *len && (spec != 's' && spec != 'c'))
 	{
-		*len = flag_info->precision;
+		*len = fi->precision;
 		ret = ft_setchar_ra(ret, *len, '0');
 	}
-	else if (flag_info->precision < *len && spec == 's')
+	else if (fi->precision < *len && spec == 's')
 	{
 		if (ft_strcmp(ret, "(nil)") == 0 || ft_strcmp(ret, "(null)") == 0)
 		{
@@ -61,7 +61,7 @@ char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len, char spec)
 			free(ret);
 			return (ft_strdup(""));
 		}
-		*len = flag_info->precision;
+		*len = fi->precision;
 		ret = ft_substr(ret, 0, *len);
 	}
 	return (ret);

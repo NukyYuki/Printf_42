@@ -31,8 +31,6 @@ typedef struct s_flags
 	char	plus;
 }			t_flags;
 
-void	ft_flag_check_helper(const char *s, t_flags **fb);
-
 int		ft_printf(const char *str, ...);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -45,7 +43,8 @@ char	*ft_dupchar(int n);
 char	ft_strchr(const char *s);
 int		ft_strrchr_b(const char *s, int c);
 int		check_spec(char const c, char *spec_lst);
-t_flags	*ft_flag_check(const char *s, int *count);
+t_flags	*ft_flagcheck(const char *s, int *count);
+void	ft_flagcheck_helper(const char *s, t_flags **fb);
 char	*ft_flags(const char *s, char *ret, int *p_fs, char *spec);
 char	*ft_itoa(int n);
 char	*ft_itoa_base(unsigned int n, char *base);
@@ -54,13 +53,14 @@ char	*ft_setspace_la(char *ret, size_t width);
 char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 int		ft_setpercent(va_list var_args, const char *str, int *p, int count);
-char	*ft_width_bigger_len(t_flags *flag_info, char *ret);
-char	*ft_has_precision(t_flags *flag_info, char *ret, size_t *len, char spec);
+char	*ft_width_bigger_len(t_flags *fi, char *ret);
+char	*ft_has_precision(t_flags *fi, char *ret, size_t *len, char spec);
 char	*ft_itoa_pt(unsigned long n, char *base);
 char	*ft_set_point(void *ptr, char *base);
 int		ft_strcmp(char *str1, char *str2);
 char	*ft_return_null(void);
 char	*ft_negzeros(t_flags *fi, char *ret, size_t *len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	*ft_check_ifnull(char *ret, t_flags *fi, char **spec);
 
 #endif
