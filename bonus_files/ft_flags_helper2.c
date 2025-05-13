@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_mini_helper(char **ret)
+char	*ft_minihelper(char **ret)
 {
 	return (free(*ret), ft_strdup(""));
 }
