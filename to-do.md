@@ -46,5 +46,4 @@
    - with this we could avoid both errors above w/o having to hard code edge cases
 - [ ] when everything is done try to implement ft_sub_printf
 - [x] change headers/var names, make each project unique
-
 - [x] change ft_strchr name for no conflicts
