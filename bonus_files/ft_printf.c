@@ -18,6 +18,8 @@ int	ft_printf(const char *str, ...)
 	int		count;
 	int		i;
 
+	if (!str)
+		return (-1);
 	va_start(var_args, str);
 	i = 0;
 	count = 0;
@@ -62,7 +64,8 @@ int	ft_putstr_spec(const char *s, char spec)
 		if (s[0] == 0)
 		{
 			i += write(1, "", 1);
-			i += write(1, &s[1], ft_strlen(&s[1]));
+			if (s[1])
+				i += write(1, &s[1], ft_strlen(&s[1]));
 		}
 		else
 		{

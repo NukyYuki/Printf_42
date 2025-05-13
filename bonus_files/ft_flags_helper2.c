@@ -22,12 +22,14 @@ char	*ft_check_ifnull(char *ret, t_flags *fi, char **spec)
 	char		*s;
 	size_t		i;
 
+	if (fi->width == 1)
+		return (ret);
 	if (**spec != 'c' || *ret)
 		return (ret = ft_width_bigger_len(fi, ret));
 	i = 0;
 	if (!fi->minus)
 		fi->width--;
-	s = malloc(sizeof(char) * fi->width + 1);
+	s = malloc(sizeof(char) * (fi->width + 1));
 	if (!s)
 		return (NULL);
 	if (fi->minus)
