@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 01:47:58 by manmaria          #+#    #+#             */
-/*   Updated: 2025/05/11 01:48:01 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/05/13 02:29:53 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ int	hash_init(size_t *len, size_t *i, int *k, t_flags *fi)
 	return (bow);
 }
 
+	//if (ft_strcmp(ret, "0") == 0)
+	//	return (ret);
+
+char	*sethash_helper(char *ret)
+{
+	if (ft_strcmp(ret, "(nil)") == 0)
+		return (ret);
+	else
+		return (ret);
+}
+
 char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 {
 	char	*p_s;
@@ -51,11 +62,9 @@ char	*ft_sethash(char *ret, size_t *len, t_flags *fi, char spec)
 	int		k;
 	int		bow;
 
-	if (ft_strcmp(ret, "0") == 0)
-		return (ret);
+	if (ft_strcmp(ret, "0") == 0 || ft_strcmp(ret, "(nil)") == 0)
+		return (sethash_helper(ret));
 	bow = hash_init(len, &i, &k, fi);
-	if (ft_strcmp(ret, "(nil)") == 0)
-		return (ret);
 	p_s = calloc((*len + bow + 1), sizeof(char));
 	if (!p_s)
 		return (NULL);

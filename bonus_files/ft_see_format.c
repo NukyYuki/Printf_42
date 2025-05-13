@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_see_format.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 11:53:50 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/05/07 12:39:25 by mipinhei         ###   ########.fr       */
+/*   Created: 2025/05/13 02:42:50 by manmaria          #+#    #+#             */
+/*   Updated: 2025/05/13 02:42:52 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	ft_init(char **return_val, char **base, int spec)
 	else
 		*base = "0123456789";
 }
-
-//int	check_for_null();
 
 char	*ft_see_format(const char *s, va_list varg)
 {

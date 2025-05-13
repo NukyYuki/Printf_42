@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mipinhei <mipinhei@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 15:39:48 by mipinhei          #+#    #+#             */
-/*   Updated: 2025/04/29 20:04:19 by mipinhei         ###   ########.fr       */
+/*   Created: 2025/05/13 02:41:59 by manmaria          #+#    #+#             */
+/*   Updated: 2025/05/13 02:42:01 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
