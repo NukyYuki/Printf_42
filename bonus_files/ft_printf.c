@@ -43,7 +43,7 @@ int	ft_setpercent(va_list var_args, const char *str, int *p, int count)
 
 	flag_skip = 0;
 	ret = 0;
-	spec = ft_strchr(str + ++(*p));
+	spec = ft_strchr_spec(str + ++(*p));
 	ret = ft_see_format(&spec, var_args);
 	ret = ft_flags(str + *p, ret, &flag_skip, &spec);
 	*p += flag_skip + 1;

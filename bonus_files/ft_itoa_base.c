@@ -21,7 +21,7 @@ static size_t	lengths(unsigned int n, int base_len)
 		len++;
 	while (n > 0)
 	{
-		n = n / base_len;
+		n /= base_len;
 		len++;
 	}
 	return (len);
@@ -29,20 +29,16 @@ static size_t	lengths(unsigned int n, int base_len)
 
 static char	*putnbr_str(unsigned int n, char *str, char *base, int base_len)
 {
-	size_t	i;
 	size_t	len;
 
 	len = lengths(n, base_len);
-	i = 0;
 	str[len] = '\0';
-	len--;
 	while (n >= (unsigned int)base_len)
 	{
-		str[len] = base[n % base_len];
+		str[len-- - 1] = base[n % base_len];
 		n /= base_len;
-		len--;
 	}
-	str[i] = base[n];
+	str[len - 1] = base[n];
 	return (str);
 }
 

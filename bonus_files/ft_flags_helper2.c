@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-char	*ft_minihelper(char **ret)
+char	*ft_minihelper(char *ret)
 {
-	return (free(*ret), ft_strdup(""));
+	return (free(ret), ft_strdup(""));
 }
 
 char	*ft_check_ifnull(char *ret, t_flags *fi, char **spec)

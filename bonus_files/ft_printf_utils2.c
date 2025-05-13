@@ -61,7 +61,7 @@ int	ft_checkspec(char const c, char *spec_lst)
 	return (0);
 }
 
-char	ft_strchr(const char *s)
+char	ft_strchr_spec(const char *s)
 {
 	int	i;
 

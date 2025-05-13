@@ -49,7 +49,7 @@ char	*ft_flags(const char *s, char *ret, int *p_fs, char *spec)
 	len = ft_strlen(ret);
 	fi = ft_flagcheck(s, p_fs);
 	if (ft_strcmp(ret, "0") == 0 && !fi->precision && fi->in_precision)
-		ret = ft_minihelper(&ret);
+		ret = ft_minihelper(ret);
 	if (*spec == '%')
 		return (free(fi), ret);
 	if (ft_strrchr_b(ret, '-') == 1 && (ft_checkspec(*spec, "di")))

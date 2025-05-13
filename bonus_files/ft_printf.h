@@ -41,7 +41,7 @@ size_t	ft_strlen(const char *s);
 char	*ft_see_format(const char *s, va_list var_args);
 char	*ft_strdup(const char *src);
 char	*ft_dupchar(int n);
-char	ft_strchr(const char *s);
+char	ft_strchr_spec(const char *s);
 int		ft_strrchr_b(const char *s, int c);
 int		ft_checkspec(char const c, char *spec_lst);
 t_flags	*ft_flagcheck(const char *s, int *count);
@@ -63,6 +63,6 @@ char	*ft_return_null(void);
 char	*ft_negzeros(t_flags *fi, char *ret, size_t *len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_check_ifnull(char *ret, t_flags *fi, char **spec);
-char	*ft_minihelper(char **ret);
+char	*ft_minihelper(char *ret);
 
 #endif

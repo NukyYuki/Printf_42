@@ -17,18 +17,16 @@ static size_t	lengths(int n)
 	long		nb;
 	size_t		len;
 
-	len = 0;
+	len = 1;
 	nb = n;
-	if (nb == 0)
-		len++;
 	if (nb < 0)
 	{
-		nb = -nb;
+		nb *= -1;
 		len++;
 	}
-	while (nb > 0)
+	while (nb >= 10)
 	{
-		nb = nb / 10;
+		nb /= 10;
 		len++;
 	}
 	return (len);
@@ -37,27 +35,22 @@ static size_t	lengths(int n)
 static char	*putnbr_str(int n, char *str)
 {
 	long	nb;
-	size_t	i;
 	size_t	len;
 
 	nb = n;
 	len = lengths(n);
-	i = 0;
 	str[len] = '\0';
-	len--;
 	if (nb < 0)
 	{
 		nb = -nb;
-		str[i] = '-';
-		i++;
+		str[0] = '-';
 	}
 	while (nb > 9)
 	{
-		str[len] = (nb % 10) + '0';
+		str[len-- - 1] = (nb % 10) + '0';
 		nb /= 10;
-		len--;
 	}
-	str[i] = nb + '0';
+	str[len - 1] = nb + '0';
 	return (str);
 }
 
