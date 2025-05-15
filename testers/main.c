@@ -1,9 +1,11 @@
-#include "bonus_files/ft_printf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
 
 int main(void)
 {
+
+	const char *s = NULL;
 
 	printf("ft: [%d]\n", ft_printf("ft {%s} ", "\0\0 ola nulos"));
 	printf("Og: [%d]\n", printf("Og {%s} ", "\0\0 ola nulos"));
